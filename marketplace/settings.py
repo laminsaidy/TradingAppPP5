@@ -58,8 +58,8 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # Global templates folder (optional)
+        'APP_DIRS': True,  # Look for templates in app-specific folders
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -70,7 +70,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'marketplace.wsgi.application'
 
 
