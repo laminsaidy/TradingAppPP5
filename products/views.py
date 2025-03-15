@@ -1,6 +1,7 @@
 # products/views.py
 from django.shortcuts import render
 
+
 def menu(request):
     return render(request, 'products/menu.html')
 
