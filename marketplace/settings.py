@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'products',
     'item',
+    'dashboard',
+    'conversation',
 
 ]
 
