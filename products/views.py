@@ -1,6 +1,5 @@
 # products/views.py
 from django.shortcuts import render
-from item.models import Category, Item
 
 def inbox(request):
     return render(request, 'conversation/inbox.html')
