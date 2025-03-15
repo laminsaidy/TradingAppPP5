@@ -2,6 +2,11 @@
 from django.shortcuts import render
 from item.models import Category, Item
 
+def inbox(request):
+    return render(request, 'conversation/inbox.html')
+
+def index(request):
+    return render(request, 'dashboard/index.html')
 
 def menu(request):
     return render(request, 'products/menu.html')
