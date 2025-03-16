@@ -1,17 +1,21 @@
 # products/views.py
 from django.shortcuts import render
 
-def inbox(request):
-    return render(request, 'conversation/inbox.html')
+from item.models import Category, Item
 
-def index(request):
-    return render(request, 'dashboard/index.html')
+
 
 def menu(request):
     return render(request, 'products/menu.html')
 
 def index(request):
-    return render(request, 'products/index.html')
+    items = Item.objects.filter(is_sold=False)[0:6]
+    categories = Category.objects.all()
+
+    return render(request, 'products/index.html', {
+        'categories': categories,
+        'items': items,
+    })
 
 def about(request):
     return render(request, 'products/about.html')
