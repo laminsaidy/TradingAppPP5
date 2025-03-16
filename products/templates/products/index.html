@@ -7,12 +7,12 @@
   .section-title {
     font-weight: bolder;
     font-size: 2.5rem;
-    color: #343a40; 
+    color: #343a40;
   }
   .section-bg {
-    background-color: #f8f9fa; 
-    border-radius: 1rem; 
-    padding: 2rem; 
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
   }
 </style>
 
@@ -22,17 +22,19 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for item in items %}
     <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img
-          src="{{ item.image.url }}"
-          class="card-img-top rounded-top-3"
-          alt="{{ item.name }}"
-        />
-        <div class="card-body">
-          <h2 class="card-title h4">{{ item.name }}</h2>
-          <p class="card-text text-muted">Price: {{ item.price }}</p>
+      <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-reset">
+        <div class="card h-100 shadow-sm">
+          <img
+            src="{{ item.image.url }}"
+            class="card-img-top rounded-top-3"
+            alt="{{ item.name }}"
+          />
+          <div class="card-body">
+            <h2 class="card-title h4">{{ item.name }}</h2>
+            <p class="card-text text-muted">Price: {{ item.price }}</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     {% endfor %}
   </div>
