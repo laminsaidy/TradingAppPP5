@@ -56,6 +56,29 @@
             transform: translateY(-3px);
         }
 
+        /* Dashboard and Inbox button styles */
+        .btn-dashboard {
+            background-color: #007bff;
+            color: white;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .btn-dashboard:hover {
+            background-color: #0056b3;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-inbox {
+            background-color: #ffc107;
+            color: white;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .btn-inbox:hover {
+            background-color: #e0a800;
+            color: white;
+            transform: translateY(-3px);
+        }
+
         /* Footer styling */
         .footer {
             display: flex;
@@ -64,31 +87,31 @@
             padding: 20px;
             background-color: #343a40;
             color: white;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
         }
         .footer-links {
             display: flex;
-            gap: 16px; /* Space between links */
+            gap: 16px; 
         }
         .footer-links a {
-            color: white; /* Changed from teal to white */
+            color: white; 
             text-decoration: none;
             transition: color 0.3s ease;
         }
         .footer-links a:hover {
-            color: #cccccc; /* Lighter grey on hover */
+            color: #cccccc; 
         }
         .copyright {
             font-size: 14px;
             color: #cccccc;
         }
         .copyright a {
-            color: white; /* Changed from teal to white */
+            color: white; 
             text-decoration: none;
             transition: color 0.3s ease;
         }
         .copyright a:hover {
-            color: #cccccc; /* Lighter grey on hover */
+            color: #cccccc; 
         }
     </style>
 </head>
@@ -118,10 +141,16 @@
                         </li>
                         {% if request.user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link btn btn-teal mx-2" href="{% url 'dashboard:index' %}">Dashboard</a>
+                                <a class="nav-link btn btn-dashboard mx-2" href="{% url 'dashboard:index' %}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn btn-teal mx-2" href="{% url 'conversation:inbox' %}">Inbox</a>
+                                <a class="nav-link btn btn-inbox mx-2" href="{% url 'conversation:inbox' %}">Inbox</a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" action="{% url 'products:logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-login mx-2">Log Out</button>
+                                </form>
                             </li>
                         {% else %}
                             <li class="nav-item">
