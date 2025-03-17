@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse
 from item.models import Category, Item
 from .forms import SignupForm
 
@@ -21,12 +23,13 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('products:index') 
+                base_url = reverse('products:index')
+                query_string = '?message=Login successful!'
+                return HttpResponseRedirect(f"{base_url}{query_string}")
     else:
         form = AuthenticationForm()
 
     return render(request, 'products/login.html', {'form': form})
-
 
 def contact(request):
     return render(request, 'products/contact.html')
@@ -36,7 +39,9 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('products:login')
+            base_url = reverse('products:login')
+            query_string = '?message=Signup successful!'
+            return HttpResponseRedirect(f"{base_url}{query_string}")
     else:
         form = SignupForm()
 
@@ -53,3 +58,9 @@ def menu(request):
 
 def about(request):
     return render(request, 'products/about.html')
+
+def custom_logout(request):
+    logout(request)
+    base_url = reverse('products:login')
+    query_string = '?message=Logout successful!'
+    return HttpResponseRedirect(f"{base_url}{query_string}")

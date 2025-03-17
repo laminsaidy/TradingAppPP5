@@ -87,31 +87,31 @@
             padding: 20px;
             background-color: #343a40;
             color: white;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
         .footer-links {
             display: flex;
-            gap: 16px; 
+            gap: 16px;
         }
         .footer-links a {
-            color: white; 
+            color: white;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         .footer-links a:hover {
-            color: #cccccc; 
+            color: #cccccc;
         }
         .copyright {
             font-size: 14px;
             color: #cccccc;
         }
         .copyright a {
-            color: white; 
+            color: white;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         .copyright a:hover {
-            color: #cccccc; 
+            color: #cccccc;
         }
     </style>
 </head>
@@ -185,5 +185,37 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to display a brief alert message
+        function showAlert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 p-2';
+            alertBox.style.zIndex = 1050;
+            alertBox.style.width = 'fit-content';
+            alertBox.style.opacity = 0;
+            alertBox.style.transition = 'opacity 0.5s ease';
+            alertBox.innerText = message;
+            document.body.appendChild(alertBox);
+
+            // Fade in the alert
+            setTimeout(() => {
+                alertBox.style.opacity = 1;
+            }, 10);
+
+            // Automatically remove the alert after 3 seconds
+            setTimeout(() => {
+                alertBox.style.opacity = 0;
+                setTimeout(() => {
+                    document.body.removeChild(alertBox);
+                }, 500);
+            }, 3000);
+        }
+
+        // Check for messages in the URL and display alerts
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('message')) {
+            showAlert(urlParams.get('message'));
+        }
+    </script>
 </body>
 </html>
