@@ -51,7 +51,8 @@ def new(request):
     return render(request, 'products/new.html')
 
 def items(request):
-    return render(request, 'products/items.html')
+    items_list = Item.objects.filter(is_sold=False)
+    return render(request, 'products/items.html', {'items': items_list})
 
 def menu(request):
     return render(request, 'products/menu.html')

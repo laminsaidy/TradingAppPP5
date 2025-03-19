@@ -134,10 +134,10 @@
                             <a class="nav-link nav-hover" href="{% url 'products:about' %}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-hover" href="{% url 'products:items' %}">Browse Items</a>
+                            <a class="nav-link nav-hover" href="{% url 'item:items' %}">Browse Items</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-hover" href="{% url 'products:new' %}">New Item</a>
+                            <a class="nav-link nav-hover" href="{% url 'item:create' %}">New Item</a>
                         </li>
                         {% if request.user.is_authenticated %}
                             <li class="nav-item">
