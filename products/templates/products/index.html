@@ -1,4 +1,5 @@
 {% extends 'products/base.html' %}
+{% load static %}  <!-- Load the static template tag -->
 
 {% block title %}Welcome{% endblock %}
 
@@ -24,11 +25,20 @@
     <div class="col">
       <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-reset">
         <div class="card h-100 shadow-sm">
-          <img
-            src="{{ item.image.url }}"
-            class="card-img-top rounded-top-3"
-            alt="{{ item.name }}"
-          />
+          <!-- Check if item.image exists -->
+          {% if item.image %}
+            <img
+              src="{{ item.image.url }}"
+              class="card-img-top rounded-top-3"
+              alt="{{ item.name }}"
+              onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';"
+            />
+          {% else %}
+            <!-- Display a placeholder image or message if no image is available -->
+            <div class="card-img-top rounded-top-3 bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+              <p class="text-muted">No image available</p>
+            </div>
+          {% endif %}
           <div class="card-body">
             <h2 class="card-title h4">{{ item.name }}</h2>
             <p class="card-text text-muted">Price: {{ item.price }}</p>
