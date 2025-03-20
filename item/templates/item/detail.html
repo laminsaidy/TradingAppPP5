@@ -1,12 +1,26 @@
 {% extends 'products/base.html' %}
-{% load static %}  <!-- Add this line -->
+{% load static %}  <!-- Load the static template tag -->
 
 {% block title %}{{ item.name }}{% endblock %}
 
 {% block content %}
+<style>
+  /* Custom styles for the Contact Seller button */
+  .contact-seller-btn {
+    border-radius: 25px; /* Makes the button rounder */
+    padding: 10px 20px; /* Adjusts the button height and width */
+    font-size: 1rem; /* Adjusts the font size */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  .contact-seller-btn:hover {
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+  }
+</style>
+
 <div class="row g-4">
     <div class="col-md-8">
-
         <!-- Check if item.image exists -->
         {% if item.image %}
             <img src="{{ item.image.url }}" class="img-fluid rounded" alt="{{ item.name }}" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
@@ -29,6 +43,52 @@
                 {{ item.description }}
             </p>
         {% endif %}
+
+        <!-- Contact Seller Button -->
+        {% if request.user != item.created_by %}
+            <a href="#" class="btn btn-primary contact-seller-btn w-100 mt-3">
+                Contact Seller
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Related Items Section -->
+<div class="mt-6 px-4 py-5 section-bg">
+    <h2 class="mb-4 text-center section-title">Related Items</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for related_item in related_items %}
+        <div class="col">
+            <a href="{% url 'item:detail' related_item.id %}" class="text-decoration-none text-reset">
+                <div class="card h-100 shadow-sm">
+                    <!-- Check if related_item.image exists -->
+                    {% if related_item.image %}
+                        <img
+                            src="{{ related_item.image.url }}"
+                            class="card-img-top rounded-top-3"
+                            alt="{{ related_item.name }}"
+                            onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';"
+                        />
+                    {% else %}
+                        <!-- Display a placeholder image or message if no image is available -->
+                        <div class="card-img-top rounded-top-3 bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <p class="text-muted">No image available</p>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h2 class="card-title h4">{{ related_item.name }}</h2>
+                        <p class="card-text text-muted">Price: {{ related_item.price }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% empty %}
+        <!-- Display a message if no related items are found -->
+        <div class="col-12 text-center">
+            <p class="text-muted">No related items found.</p>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
