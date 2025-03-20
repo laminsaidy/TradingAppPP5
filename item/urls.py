@@ -8,3 +8,4 @@ urlpatterns = [
     path('detail/<int:pk>/', views.detail, name='detail'),  
     path('create/', views.create_item, name='create'),  
 ]
+

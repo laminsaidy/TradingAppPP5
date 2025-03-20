@@ -7,15 +7,15 @@
 <style>
   /* Custom styles for the Contact Seller button */
   .contact-seller-btn {
-    border-radius: 25px; /* Makes the button rounder */
-    padding: 10px 20px; /* Adjusts the button height and width */
-    font-size: 1rem; /* Adjusts the font size */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 25px; 
+    padding: 10px 20px; 
+    font-size: 1rem; 
+    transition: all 0.3s ease; 
   }
 
   .contact-seller-btn:hover {
-    transform: scale(1.05); /* Slightly enlarges the button on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
 </style>
 
@@ -23,7 +23,12 @@
     <div class="col-md-8">
         <!-- Check if item.image exists -->
         {% if item.image %}
-            <img src="{{ item.image.url }}" class="img-fluid rounded" alt="{{ item.name }}" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+            <img
+              src="{{ item.image.url }}"
+              class="img-fluid rounded"
+              alt="{{ item.name }}"
+              onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}'"
+            />
         {% else %}
             <!-- Display a placeholder image or message if no image is available -->
             <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 300px;">
@@ -68,7 +73,7 @@
                             src="{{ related_item.image.url }}"
                             class="card-img-top rounded-top-3"
                             alt="{{ related_item.name }}"
-                            onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';"
+                            onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}'"
                         />
                     {% else %}
                         <!-- Display a placeholder image or message if no image is available -->
