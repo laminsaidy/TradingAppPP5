@@ -3,11 +3,15 @@
 {% block title %}New Conversation{% endblock %}
 
 {% block content %}
-<h1 class="mb-6 text-3xl">New Conversation</h1>
+<div class="modern-form">
+    <h1 class="text-center mb-4">New Conversation</h1>
 
-<form method="post" action=".">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Send</button>
-</form>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.content }}
+        </div>
+        <button type="submit" class="btn modern-submit-btn w-100">Send</button>
+    </form>
+</div>
 {% endblock %}
