@@ -55,19 +55,17 @@ def EditButton(request, pk):
     # Fetch the item, ensuring it belongs to the logged-in user
     product = get_object_or_404(Item, pk=pk, created_by=request.user)
 
+    form = EditItemForm(instance=product)
+
     if request.method == 'POST':
-        # Populate the form with the submitted data and files
         form = EditItemForm(request.POST, request.FILES, instance=product)
 
         # Validate and save the form if it's valid
         if form.is_valid():
             updated_item = form.save(commit=False)
-            updated_item.save()  
-            return redirect('item:detail', pk=updated_item.id)
-          
-        form = EditItemForm(instance=product)
+            updated_item.save()  # Save the updated item
+            return redirect('item:detail', pk=updated_item.id)  
 
-    # Render the form template with the form and a custom title
     return render(request, 'item/form.html', {
         'form': form,
         'title': 'Modify Item Details',  
