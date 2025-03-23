@@ -32,3 +32,10 @@ def detail(request, pk):
 def items(request):
     items_list = Item.objects.filter(is_sold=False)
     return render(request, 'item/items.html', {'items': items_list})
+
+@login_required
+def delete(request, pk):
+    item = get_object_or_404(Item, pk=pk, created_by=request.user)
+    item.delete()
+
+    return redirect('dashboard:index')
