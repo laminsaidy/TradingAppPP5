@@ -20,7 +20,7 @@
 
   /* Custom styles for the Delete button */
   .delete-btn {
-    background-color:  blue; 
+    background-color: blue; 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -32,6 +32,22 @@
 
   .delete-btn:hover {
     background-color: #ff0000; 
+  }
+
+  /* Custom styles for the Edit button */
+  .edit-btn {
+    background-color: green; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none; 
+  }
+
+  .edit-btn:hover {
+    background-color: darkgreen; 
   }
 </style>
 
@@ -67,6 +83,7 @@
 
         {% if request.user == item.created_by %}
             <div class="mt-4">
+                <a href="{% url 'item:edit' item.id %}" class="edit-btn w-100 text-center d-block mb-3">Edit</a>
                 <a href="{% url 'item:delete' item.id %}" class="delete-btn w-100 text-center d-block" onclick="return confirmDelete()">Delete</a>
             </div>
         {% else %}
