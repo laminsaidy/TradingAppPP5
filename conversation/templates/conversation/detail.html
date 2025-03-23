@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="mb-4 text-center">Conversation</h1>
+    <h1 class="mb-4 text-center fw-bold">Conversation</h1>
 
     <!-- Messages -->
     <div class="list-group mb-4">
         {% for message in conversation.messages.all %}
-            <div class="list-group-item {% if message.created_by == request.user %}bg-primary text-white{% else %}bg-light{% endif %} mb-3 rounded">
+            <div class="list-group-item {% if message.created_by == request.user %}message-sent{% else %}message-received{% endif %} mb-3 rounded">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <strong>{{ message.created_by.username }}</strong>
                     <small>{{ message.created_at|date:"F j, Y, g:i a" }}</small>
@@ -25,7 +25,63 @@
         <div class="mb-3">
             {{ form.content }}
         </div>
-        <button type="submit" class="btn btn-primary w-100">Send</button>
+        <button type="submit" class="btn btn-primary" style="width: 150px;">Send</button>
     </form>
 </div>
+
+<!-- Custom CSS for Modern Look -->
+<style>
+    /* Sent message styling */
+    .message-sent {
+        background-color: #20c997; 
+        color: white;
+        border: none;
+    }
+
+    /* Received message styling */
+    .message-received {
+        background-color: #f8f9fa; 
+        color: black;
+        border: 1px solid #e0e0e0; 
+    }
+
+    /* Message container styling */
+    .list-group-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form styling */
+    .reply-form textarea {
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #e0e0e0;
+        resize: none;
+    }
+
+    .reply-form textarea:focus {
+        border-color: #20c997; 
+        box-shadow: 0 0 0 0.2rem rgba(32, 201, 151, 0.25); 
+    }
+
+    /* Send button styling */
+    .btn-primary {
+        background-color: #20c997; 
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #1aa179; 
+    }
+</style>
 {% endblock %}
