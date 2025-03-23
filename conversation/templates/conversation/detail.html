@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="mb-4 text-center fw-bold">Conversation</h1>
+    <h1 class="mb-4 text-center fw-bold">Conversations</h1>
 
     <!-- Messages -->
     <div class="list-group mb-4">
@@ -36,13 +36,17 @@
         background-color: #20c997; 
         color: white;
         border: none;
+        margin-left: auto; 
+        max-width: 70%; 
     }
 
     /* Received message styling */
     .message-received {
-        background-color: #f8f9fa; 
+        background-color: #e9ecef; 
         color: black;
         border: 1px solid #e0e0e0; 
+        margin-right: auto; 
+        max-width: 70%; 
     }
 
     /* Message container styling */
@@ -80,8 +84,6 @@
         transition: background-color 0.3s ease;
     }
 
-    .btn-primary:hover {
-        background-color: #1aa179; 
-    }
+    
 </style>
 {% endblock %}
