@@ -1,10 +1,74 @@
 {% extends 'products/base.html' %}
 
-{% block title %}Browse Items - Marketplace{% endblock %}
+{% block title %}Items{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Browse Items</h1>
-    <p>This is the items listing page.</p>
-</div>
+    <div class="container-fluid p-4 bg-light">
+        <div class="row">
+            <!-- Products Column -->
+            <div class="col-md-9">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for item in items %}
+                        <div class="col">
+                            <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-dark">
+                                <div class="card h-100">
+                                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.name }}</h5>
+                                        <p class="card-text text-muted">Price: {{ item.price }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Filters Column -->
+            <div class="col-md-3">
+                <!-- Search Form -->
+                <form method="get" action="{% url 'item:index' %}" class="mb-4">
+                    <div class="input-group">
+                        <input name="search" class="form-control" type="text" value="{{ search_query }}" placeholder="Find a bike, a chair or car...">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+
+                <hr class="my-4">
+
+                <!-- Categories -->
+                <p class="fw-bold">Categories</p>
+                <ul class="list-unstyled">
+                    {% for category in categories %}
+                        <li class="mb-2 p-2 rounded {% if category.id == selected_category_id %} bg-secondary text-white{% endif %}">
+                            <a href="{% url 'item:index' %}?search={{ search_query }}&category={{ category.id }}" class="text-decoration-none text-dark">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <hr class="my-4">
+
+                <!-- Clear Filters Button -->
+                <p class="fw-bold">Clear Filters</p>
+                <a href="{% url 'item:index' %}" class="btn btn-clear">Clear</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Custom Clear Button Styling */
+        .btn-clear {
+            background-color: #dc3545; 
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-clear:hover {
+            background-color: #c82333; 
+            transform: translateY(-2px); 
+        }
+    </style>
 {% endblock %}
