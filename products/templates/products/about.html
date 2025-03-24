@@ -1,6 +1,83 @@
-{% extends 'base.html' %}
+{% extends 'products/base.html' %}
 
 {% block content %}
-<h1>About Us</h1>
-<p>This is the about page for Marketplace.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="about-card p-4 p-md-5 shadow-lg rounded-4">
+                <h1 class="display-4 fw-bold mb-4 text-gradient">About Trade Hub</h1>
+                
+                <div class="modern-input mb-5">
+                    <div class="input-header bg-primary bg-opacity-10 p-4 rounded-top">
+                        <h3 class="h4 mb-0"><i class="bi bi-info-circle me-2"></i>What is Trade Hub?</h3>
+                    </div>
+                    <div class="input-body p-4 border rounded-bottom">
+                        <p class="lead">Trade Hub is a modern marketplace platform where users can buy, sell, and trade items securely.</p>
+                        
+                        <div class="feature-list mt-4">
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="bi bi-check2-circle fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-1">Secure Trading</h5>
+                                    <p class="small text-muted mb-0">Built-in messaging and user verification system</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="bi bi-collection fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-1">Item Management</h5>
+                                    <p class="small text-muted mb-0">Easy listing and browsing of products</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="bi bi-people fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-1">Community Focused</h5>
+                                    <p class="small text-muted mb-0">Connect with local buyers and sellers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-box text-center mt-5">
+                    <a href="https://github.com/laminsaidy/TradingAppPP5" target="_blank" class="btn btn-primary btn-lg px-4 me-2">
+                        <i class="bi bi-github me-2"></i>View on GitHub
+                    </a>
+                    <a href="{% url 'products:signup' %}" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-person-plus me-2"></i>Join Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .about-card {
+        background: white;
+        border: none;
+    }
+    .input-header {
+        border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+    }
+    .feature-list {
+        border-left: 3px solid #3b82f6;
+        padding-left: 1rem;
+    }
+</style>
 {% endblock %}
