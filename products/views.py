@@ -5,6 +5,16 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 from item.models import Category, Item
 from .forms import SignupForm
+from item.models import Item
+from django.db.models import Count
+
+def menu(request):
+    # Get unsold items, ordered by newest first
+    trending_items = Item.objects.filter(is_sold=False).order_by('-created_at')[:12]
+    
+    return render(request, 'products/menu.html', {
+        'trending_items': trending_items
+    })
 
 def index(request):
     items = Item.objects.filter(is_sold=False)[0:6]
@@ -54,8 +64,7 @@ def items(request):
     items_list = Item.objects.filter(is_sold=False)
     return render(request, 'products/items.html', {'items': items_list})
 
-def menu(request):
-    return render(request, 'products/menu.html')
+
 
 def about(request):
     return render(request, 'products/about.html')
