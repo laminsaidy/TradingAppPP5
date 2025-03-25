@@ -61,3 +61,6 @@ def about(request):
 def custom_logout(request):
     logout(request)
     return redirect('products:login')
+
+def contact_thanks(request):
+    return render(request, 'products/contact_thanks.html')
