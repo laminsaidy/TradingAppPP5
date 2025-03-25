@@ -4,23 +4,6 @@ from item.models import Item
 from .forms import ConversationMessageForm
 from .models import Conversation
 
-from .forms import ContactForm
-from .models import ContactMessage
-
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('products:contact_thanks')
-    else:
-        form = ContactForm()
-    return render(request, 'products/contact.html', {'form': form})
-
-def contact_thanks(request):
-    return render(request, 'products/contact_thanks.html')
-
-
 @login_required
 def inbox(request):
     conversations = Conversation.objects.filter(members=request.user).prefetch_related(
@@ -29,7 +12,6 @@ def inbox(request):
         'messages'
     ).order_by('-modified_at')
     
-    # Count unread conversations
     for conv in conversations:
         conv.unread_count = conv.messages.filter(is_read=False).exclude(created_by=request.user).count()
     
@@ -98,7 +80,6 @@ def detail(request, pk):
     else:
         form = ConversationMessageForm()
     
-    # Mark messages as read
     conversation.mark_as_read(request.user)
     
     return render(request, 'conversation/detail.html', {
