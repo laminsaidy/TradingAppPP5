@@ -15,4 +15,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('logout/', views.custom_logout, name='logout'),
     path('contact/thanks/', views.contact_thanks, name='contact_thanks'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('terms-of-service/', views.terms_of_service, name='terms_of_service'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

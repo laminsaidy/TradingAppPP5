@@ -64,3 +64,9 @@ def custom_logout(request):
 
 def contact_thanks(request):
     return render(request, 'products/contact_thanks.html')
+
+def privacy_policy(request):
+    return render(request, 'products/privacy_policy.html')
+
+def terms_of_service(request):
+    return render(request, 'products/terms_of_service.html')

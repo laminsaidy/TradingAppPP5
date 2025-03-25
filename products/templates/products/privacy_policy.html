@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Privacy Policy | {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="modern-form">
+        <h1 class="mb-4">Privacy Policy</h1>
+        <p class="text-muted">Last Updated: March 25, 2025</p>
+        
+        <h3 class="mt-4">1. Information We Collect</h3>
+        <p>We collect information you provide directly, including:</p>
+        <ul>
+            <li>Account information (name, email, contact details)</li>
+            <li>Transaction and payment information</li>
+            <li>Communications and customer support data</li>
+        </ul>
+
+        <h3 class="mt-4">2. How We Use Your Information</h3>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide, maintain, and improve our services</li>
+            <li>Process transactions and send notices</li>
+            <li>Respond to your requests and inquiries</li>
+        </ul>
+
+        <h3 class="mt-4">3. Data Security</h3>
+        <p>We implement security measures including encryption and access controls to protect your information.</p>
+
+        <h3 class="mt-4">4. Changes to This Policy</h3>
+        <p>We may update this policy and will notify you of significant changes.</p>
+
+        <div class="mt-4">
+            <a href="{% url 'products:index' %}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
