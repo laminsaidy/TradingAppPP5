@@ -24,9 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'REMOVED_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# settings.py
 
-ALLOWED_HOSTS = []
+# Debug and hosts
+DEBUG = True  # Keep this False to test 404
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  # Essential for DEBUG=False
+
+# Static files (required even if you only have images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Path to your static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production (run collectstatic)
+
+# Media files (if you use user uploads)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'products:login'
 LOGIN_REDIRECT_URL = '/'
@@ -66,7 +77,7 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

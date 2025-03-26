@@ -4,6 +4,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from item.models import Category, Item
 from .forms import SignupForm, ContactForm
 
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
