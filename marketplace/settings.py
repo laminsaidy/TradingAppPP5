@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config
+import cloudinary
+cloudinary.config( 
+    cloud_name = config('CLOUDINARY_CLOUD_NAME'),
+    api_key = config('CLOUDINARY_API_KEY'),
+    api_secret = config('CLOUDINARY_API_SECRET'),
+    secure = True
+)
+
+print("=== Cloudinary Verification ===")
+print("Cloud Name:", config('CLOUDINARY_CLOUD_NAME', default='NOT_FOUND'))
+print("API Key Exists:", bool(config('CLOUDINARY_API_KEY', default=False)))
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,17 +41,35 @@ SECRET_KEY = 'REMOVED_SECRET_KEY'
 # settings.py
 
 # Debug and hosts
-DEBUG = True  # Keep this False to test 404
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  # Essential for DEBUG=False
+DEBUG = True  
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  
 
 # Static files (required even if you only have images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Path to your static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production (run collectstatic)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
-# Media files (if you use user uploads)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Media settings
+MEDIA_URL = '/media/'  
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+    'MEDIA_TAG': 'marketplace-media',
+    'INVALIDATE': True,
+    'STATIC_IMAGES': True,
+    'QUALITY': 'auto:best',
+    'FOLDER': 'marketplace-items',
+}
+
+print("=== Cloudinary Config ===")
+print("Cloud Name:", config('CLOUDINARY_CLOUD_NAME', default='NOT FOUND'))
+print("API Key:", config('CLOUDINARY_API_KEY', default='NOT FOUND'))
+print("API Secret:", bool(config('CLOUDINARY_API_SECRET', default=False)))
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 LOGIN_URL = 'products:login'
 LOGIN_REDIRECT_URL = '/'
@@ -51,12 +83,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 
+    'cloudinary',
+    'cloudinary_storage',  
+    'django.contrib.staticfiles',
     'products',
     'item',
     'dashboard',
     'conversation',
+    
 
 ]
 
@@ -72,7 +107,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'marketplace.urls'
 
-import os
 
 TEMPLATES = [
     {
@@ -137,8 +171,7 @@ USE_TZ = True
 STATIC_URL = '/static/'  # Add leading slash
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Define where to look for static files
 
-MEDIA_URL = '/media/'  # Add leading slash
-MEDIA_ROOT = BASE_DIR / 'media'  # Define where uploaded media files are stored
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
