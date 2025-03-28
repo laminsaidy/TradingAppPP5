@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+import os
+from dotenv import load_dotenv
+import dj_database_url  
 from pathlib import Path
 from decouple import config
 import cloudinary
@@ -21,9 +24,7 @@ cloudinary.config(
     secure = True
 )
 
-print("=== Cloudinary Verification ===")
-print("Cloud Name:", config('CLOUDINARY_CLOUD_NAME', default='NOT_FOUND'))
-print("API Key Exists:", bool(config('CLOUDINARY_API_KEY', default=False)))
+
 
 
 
@@ -41,12 +42,15 @@ SECRET_KEY = 'REMOVED_SECRET_KEY'
 # settings.py
 
 # Debug and hosts
-DEBUG = True  
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']  
+DEBUG = False
+# Add to ALLOWED_HOSTS (replace 'your-app-name' with your future Render URL)
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'MyTradeHub.onrender.com']
 
-# Static files (required even if you only have images)
+# Static files (required even if only images available)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Media settings
 MEDIA_URL = '/media/'  
@@ -64,10 +68,7 @@ CLOUDINARY_STORAGE = {
     'FOLDER': 'marketplace-items',
 }
 
-print("=== Cloudinary Config ===")
-print("Cloud Name:", config('CLOUDINARY_CLOUD_NAME', default='NOT FOUND'))
-print("API Key:", config('CLOUDINARY_API_KEY', default='NOT FOUND'))
-print("API Secret:", bool(config('CLOUDINARY_API_SECRET', default=False)))
+
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -103,6 +104,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'marketplace.urls'
@@ -129,13 +131,24 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+from dotenv import load_dotenv
+load_dotenv()  
 
+
+# settings.py
+if 'DATABASE_URL' in os.environ:
+    # Production (Render + Neon/Code Institute DB)
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    # Local development (SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -168,8 +181,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'  # Add leading slash
-STATICFILES_DIRS = [BASE_DIR / 'static']  # Define where to look for static files
+STATIC_URL = '/static/'  
+STATICFILES_DIRS = [BASE_DIR / 'static']  
 
 
 
