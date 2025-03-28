@@ -5,13 +5,6 @@ from .models import Item, Category
 from .forms import NewItemForm, EditItemForm
 
 
-from django.http import HttpResponse
-from item.models import Category
-
-def debug_categories(request):
-    categories = list(Category.objects.values('id', 'name'))
-    return HttpResponse(str(categories))
-
 
 def browse_items(request):
     """

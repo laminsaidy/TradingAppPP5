@@ -13,7 +13,7 @@ class NewItemForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Explicitly load categories and customize the field
         self.fields['category'].queryset = Category.objects.all()
-        self.fields['category'].empty_label = "Select Category"  # Replace "------"
+        self.fields['category'].empty_label = "Select Category"  
         self.fields['category'].widget.attrs.update({
             'class': INPUT_CLASSES,
             'id': 'category-select'  
