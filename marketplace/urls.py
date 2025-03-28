@@ -8,6 +8,7 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('conversation/', include('conversation.urls')),
     
-    
+    path('debug-categories/', debug_categories)
+
     path('items/', include('item.urls')), 
 ]
