@@ -47,5 +47,22 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 
 ## Project Features
 ### Navbar
-![Navbar](static/images/navbar.png)
+The navigation bar adapts to the current site section, providing easy access to different pages. It remains fixed at the top of the screen for convenient navigation.
+![Navbar](static/images/Navbar.png)
+
+### Footer
+A footer which displays the Contac page, Privacy policy, Terms of service, copyrights for the website & a linkt to my Github repo.
+![Footer](static/images/Footer.png)
+
+### About
+The about page contains information on what the site is about and users can access a direct link to my Github project link and the Sign up link. 
+![Footer](static/images/About.png)
+
+### Menu Page
+The menu page displays the trending products for users to see the latest items directly in the page.
+![Menu Page](static/images/Menu.png)
+
+
+
+
 
