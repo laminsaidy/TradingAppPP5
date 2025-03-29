@@ -55,12 +55,27 @@ A footer which displays the Contac page, Privacy policy, Terms of service, copyr
 ![Footer](static/images/Footer.png)
 
 ### About
-The about page contains information on what the site is about and users can access a direct link to my Github project link and the Sign up link. 
+The about page introduces TradeHub's mission as a peer-to-peer trading platform. It highlights key features like secure messaging and local trading, along with team information. Users can also access a direct link to my Github project and the Sign up page. 
 ![Footer](static/images/About.png)
 
 ### Menu Page
 The menu page displays the trending products for users to see the latest items directly in the page.
 ![Menu Page](static/images/Menu.png)
+
+### Contact Form
+The contact page allows users to reach out to the TradeNest support team with inquiries or feedback. It includes a form with name, email, and message fields for easy communication.
+![Contact Form](static/images/Contact.png)
+
+### Sign Up Form
+New users can create a TradeHub account through this page. The form collects essential details including username, email, password, and location to enable local trading features.
+![Sign Up Form](static/images/Signup.png)
+
+### Signin Form
+Registered users authenticate to access their TradeNest account on this page. The clean interface features email/password fields and a "Forgot Password" option.
+![Sign In Form](static/images/Signin.png)
+
+
+
 
 
 
