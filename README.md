@@ -18,6 +18,7 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
   - [Footer](#footer)
   - [About Page](#home-page)
   - [Menu Page](#menu-page)
+  - [Contact form](#contact-form)
   - [Sign Up Form](#sign-out-form)
   - [Sign In Form](#sign-in-form)
   - [Admin Site](#admin-site)
@@ -43,3 +44,8 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 14. [Contributing](#contributing)
 16. [Contact](#contact)
 17. [Acknowledgements](#acknowledgements)
+
+## Project Features
+### Navbar
+![Navbar](static/images/navbar.png)
+
