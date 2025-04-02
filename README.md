@@ -74,10 +74,17 @@ New users can create a TradeHub account through this page. The form collects ess
 Registered users authenticate to access their TradeNest account on this page. The clean interface features email/password fields and a "Forgot Password" option.
 ![Sign In Form](static/images/Signin.png)
 
+### Admin Dashboard
+The admin interface provides comprehensive management tools for platform oversight, including user management, listing moderation, and system analytics.
+![Admin Dashboard](static/images/Admin.png)
 
+### Inbox Page
+Users access their messaging center here to communicate with potential buyers/sellers. The interface displays conversation threads and enables real-time messaging.
+![Inbox Page](static/images/Inbox.png)
 
+### 404 Error Page
+This custom error page appears when users attempt to access non-existent content, featuring helpful navigation options to return to active sections of TradeHub.
 
-
-
+![404 Error Page](static/images/404.png)
 
 
