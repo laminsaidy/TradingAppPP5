@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
 from item.models import Category, Item
 from .forms import SignupForm, ContactForm
 
-
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
-
 
 def contact(request):
     if request.method == 'POST':
@@ -55,6 +54,7 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your account is created, please login in')
             return redirect('products:login')
     else:
         form = SignupForm()
@@ -66,9 +66,6 @@ def about(request):
 def custom_logout(request):
     logout(request)
     return redirect('products:login')
-
-def contact_thanks(request):
-    return render(request, 'products/contact_thanks.html')
 
 def privacy_policy(request):
     return render(request, 'products/privacy_policy.html')
