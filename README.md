@@ -286,6 +286,7 @@ Project Link https://github.com/laminsaidy/TradingAppPP5
 
 ### Learning Resources
 - [Django for Beginners](https://djangoforbeginners.com/) - Project structure
+- [Render deployment guide](https://render.com/docs/deploy-django) - Deployment Guide
 - [Real Python](https://realpython.com/) - Authentication help
 - [MDN Web Docs](https://developer.mozilla.org/) - JavaScript guidance
 
