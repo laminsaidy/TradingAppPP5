@@ -87,4 +87,5 @@ This custom error page appears when users attempt to access non-existent content
 
 ![404 Error Page](static/images/404.png)
 
-
+### Target Audience
+TradingAppPP5 is designed for traders and investors who need a comprehensive platform to manage their trades, track market trends, and make informed decisions. The application aims to provide a user-friendly interface that caters to both beginners and experienced traders.
