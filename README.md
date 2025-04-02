@@ -107,3 +107,18 @@ React.js - Frontend framework
 Django - Backend framework
 PostgreSQL - Database
 Bootstrap - CSS framework
+
+### Getting Started
+## Prerequisites
+Node.js and npm installed
+Python and pip installed
+PostgreSQL installed
+## Installation
+1. Clone the repository: git clone https://github.com/laminsaidy/TradingAppPP5.git
+2. Navigate to the project directory: cd TradingAppPP5
+3. Install frontend dependencies: npm install
+4. Install backend dependencies: pip install -r requirements.txt
+5. Set up the database: python manage.py migrate
+6. Start the development server: npm start, python manage.py runserver
+
+
