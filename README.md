@@ -27,24 +27,23 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
   - [Error Page](#error-page)
 2. [Target Audience](#target-audience)
 3. [Design](#design)
+  - [Reseach](#research)
   - [Fonts](#fonts)
-  - [Structure](#structure)
-4. [Frameworks](#frameworks) 
-5. [Wireframes](#wireframes)
-6. [Built With](#built-with)
-7. [Getting Started](#getting-started)
+4. [Wireframes](#wireframes)
+5. [Built With](#built-with)
+6. [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+7. [Usage](#usage)
 8. [Testing](#testing)
 9. [Bugs](#bugs)
 10. [Deployment](#deployment)
 11. [Future Features](#future-features)
-12. [Usage](#usage)
-13 [API Endpoints](#api-endpoints)
-14. [Database Models](#database-models)
-15. [Contributing](#contributing)
-16. [Contact](#contact)
-17. [Resources & Acknowledgements](#resources-acknowledgements)
+12 [API Endpoints](#api-endpoints)
+13. [Database Models](#database-models)
+14. [Contributing](#contributing)
+15. [Contact](#contact)
+16. [Resources & Acknowledgements](#resources-acknowledgements)
 
 ## Project Features
 # Navbar
@@ -130,6 +129,12 @@ React.js – JavaScript framework for building the user interface.
 
 Bootstrap v5.3 – CSS framework for responsive and modern UI design.
 
+# Frameworks
+- Django: A high-level Python web framework used for building the Star Wars FanBlog web application.
+- Crispy Forms: A Django package used for rendering forms in a more efficient and customizable way.
+- Bootstrap v5.3: A popular CSS framework used for creating responsive and visually appealing user interfaces.
+- Cloudinary: A cloud-based media management platform used for storing and serving images in the Blog Collective project.(In process to include on the blog)
+
 #### Backend
 Django – High-level Python framework for backend development.
 
@@ -172,6 +177,14 @@ PostgreSQL installed
 5. Set up the database: python manage.py migrate
 6. Start the development server: npm start, python manage.py runserver
 
+# Usage
+1. Signup: Create a page by signing up to become a user.
+2. Signin: After signing up, you will be directed tothe sigin form.
+3. Dashboard: View an overview of your trading activities and market trends.
+4. Trade Management: Manage your trades and portfolios.
+5. User Dashboard: Find your Items on your private user dashboard.
+6. Inbox: Find new conversations from potencial buyers through the inbox.
+
 # Bugs
 If you encounter any bugs or issues, please report them in the Issues section of the repository.
 
@@ -197,14 +210,6 @@ If you encounter any bugs or issues, please report them in the Issues section of
 | **Mobile App** | Expansion | React Native cross-platform development |
 | **AI Recommendations** | ML | Personalized suggestions based on activity |
 | **Subscription Tiers** | Monetization | Premium seller profiles & promotions |
-
-# Usage
-1. Signup: Create a page by signing up to become a user.
-2. Signin: After signing up, you will be directed tothe sigin form.
-3. Dashboard: View an overview of your trading activities and market trends.
-4. Trade Management: Manage your trades and portfolios.
-5. User Dashboard: Find your Items on your private user dashboard.
-6. Inbox: Find new conversations from potencial buyers through the inbox.
 
 # Models
 ### Category
