@@ -37,12 +37,13 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
   - [Installation](#installation)
 8. [Testing](#testing)
 9. [Bugs](#bugs)
-10. [Usage](#usage)
-11 [API Endpoints](#api-endpoints)
-12. [Database Models](#database-models)
+10. [Future Features](#future-features)
+11. [Usage](#usage)
+12 [API Endpoints](#api-endpoints)
+13. [Database Models](#database-models)
 14. [Contributing](#contributing)
-16. [Contact](#contact)
-18. [Resources & Acknowledgements](#resources-acknowledgements)
+15. [Contact](#contact)
+16. [Resources & Acknowledgements](#resources-acknowledgements)
 
 ## Project Features
 # Navbar
@@ -133,6 +134,29 @@ PostgreSQL installed
 
 # Bugs
 If you encounter any bugs or issues, please report them in the Issues section of the repository.
+
+# Future Features Roadmap
+
+### High Priority
+| Feature | Status | Description |
+|---------|--------|-------------|
+| **Escrow Payments** | Planned | Secure transaction system with 3rd-party holding |
+| **Real-time Notifications** | In Design | WebSocket alerts for messages & transactions |
+| **Advanced Search Filters** | Backlog | Geo-radius, price range, and condition filters |
+
+### Medium Priority
+| Feature | Status | Description |
+|---------|--------|-------------|
+| **User Verification** | Researching | ID verification for trusted sellers |
+| **Ratings System** | Planned | 1-5 star ratings with written reviews |
+| **Saved Searches** | Backlog | Email alerts for new matching items |
+
+### Long-Term Vision
+| Feature | Category | Details |
+|---------|----------|--------|
+| **Mobile App** | Expansion | React Native cross-platform development |
+| **AI Recommendations** | ML | Personalized suggestions based on activity |
+| **Subscription Tiers** | Monetization | Premium seller profiles & promotions |
 
 # Usage
 1. Signup: Create a page by signing up to become a user.
