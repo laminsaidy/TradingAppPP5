@@ -42,7 +42,7 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 12. [Database Models](#database-models)
 14. [Contributing](#contributing)
 16. [Contact](#contact)
-17. [Acknowledgements](#acknowledgements)
+18. [Resources & Acknowledgements](#resources-acknowledgements)
 
 ## Project Features
 # Navbar
@@ -144,14 +144,14 @@ If you encounter any bugs or issues, please report them in the Issues section of
 
 # Models
 ### Category
-Python:
+Python
 class Category(models.Model):
     name = models.CharField(max_length=255)
 - Organizes products hierarchically
 - Alphabetical ordering
 
 ### Item
-Python:
+Python
 class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = CloudinaryField('image', folder='item_images')
@@ -231,6 +231,43 @@ Represents a messaging thread between users about an item
 5. Open a Pull Request
 
 # Contact
-Lamin Saidy - nimalydias@gmail.com
+Lamin Saidy nimalydias@gmail.com
 
-Project Link: https://github.com/laminsaidy/TradingAppPP5
+Project Link https://github.com/laminsaidy/TradingAppPP5
+
+# Resources & Acknowledgements
+
+### Core Development
+| Resource | Version | Usage |
+|----------|---------|-------|
+| [Django](https://docs.djangoproject.com/) | 4.2 | Backend framework |
+| [Django REST Framework](https://www.django-rest-framework.org/) | 3.14 | API endpoints |
+| [PostgreSQL](https://www.postgresql.org/docs/) | 14 | Database (with PostGIS) |
+| [Python](https://docs.python.org/3/) | 3.10 | Runtime environment |
+
+### Frontend & UI
+| Resource | Version | Usage |
+|----------|---------|-------|
+| [Bootstrap](https://getbootstrap.com/) | 5.3 | Responsive layouts |
+| [Google Maps API](https://developers.google.com/maps/documentation) | v3.55 | Location features |
+| [Cloudinary](https://cloudinary.com/documentation) | 1.36 | Image management |
+| [jQuery](https://api.jquery.com/) | 3.7 | Interactive elements |
+
+### Project Setup
+| Resource | Usage |
+|----------|-------|
+| [GitHub Actions](https://docs.github.com/en/actions) | CI/CD pipelines |
+| [Render](https://render.com/docs) | Deployment and hosting |
+| [Docker](https://docs.docker.com/) | Containerization |
+
+### Learning Resources
+- [Django for Beginners](https://djangoforbeginners.com/) - Project structure
+- [Real Python](https://realpython.com/) - Authentication help
+- [MDN Web Docs](https://developer.mozilla.org/) - JavaScript guidance
+
+### Special Thanks
+- **CodeInstitute** [Code Institute:](https://codeinstitute.net/)
+- **My friend who works as a senior software developer Pedram**
+- **Stack Overflow Community** - Debugging solutions
+- **DigitalOcean Tutorials** - Server optimization
+- **Django Discord** - Architecture advice
