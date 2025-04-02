@@ -121,4 +121,6 @@ PostgreSQL installed
 5. Set up the database: python manage.py migrate
 6. Start the development server: npm start, python manage.py runserver
 
+### Bugs
+If you encounter any bugs or issues, please report them in the Issues section of the repository.
 
