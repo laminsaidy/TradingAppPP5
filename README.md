@@ -89,3 +89,15 @@ This custom error page appears when users attempt to access non-existent content
 
 ### Target Audience
 TradingAppPP5 is designed for traders and investors who need a comprehensive platform to manage their trades, track market trends, and make informed decisions. The application aims to provide a user-friendly interface that caters to both beginners and experienced traders.
+
+### Design
+Fonts
+Primary Font: Roboto
+Secondary Font: Lato
+Structure
+The application follows a clean and intuitive structure, with a focus on usability and accessibility. The main sections include:
+
+Dashboard: Overview of user activities and market trends.
+Trade Management: Tools for managing trades and portfolios.
+User Profile: Personalized settings and preferences.
+messagin inbox: Inbox for managing conversations.
