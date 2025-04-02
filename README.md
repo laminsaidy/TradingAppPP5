@@ -101,3 +101,9 @@ Dashboard: Overview of user activities and market trends.
 Trade Management: Tools for managing trades and portfolios.
 User Profile: Personalized settings and preferences.
 messagin inbox: Inbox for managing conversations.
+
+### Built With
+React.js - Frontend framework
+Django - Backend framework
+PostgreSQL - Database
+Bootstrap - CSS framework
