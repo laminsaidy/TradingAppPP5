@@ -169,7 +169,7 @@ Represents a messaging thread between users about an item
 
 - One-to-Many: Messages (via ConversationMessage)
 
-## Database Schema
+### Database Schema
 
 ### `conversation` Table
 | Field        | Type      | Description                     |
@@ -197,4 +197,14 @@ Represents a messaging thread between users about an item
 | `created_by_id`   | Integer   | ForeignKey to `auth_user` (sender)   |
 | `is_read`         | Boolean   | Read status (True/False)             |
 
+### API Endpoints
 
+| Endpoint                      | Method | Description                              |
+|-------------------------------|--------|------------------------------------------|
+| `/api/items/`                 | GET    | List all available items                 |
+| `/api/items/?category=<id>`   | GET    | Filter items by category ID              |
+| `/api/contact/`               | POST   | Submit contact form                      |
+| `/api/conversations/`         | GET    | List user's conversations                |
+| `/api/conversations/<id>/`    | GET    | Retrieve specific conversation           |
+| `/api/conversations/<id>/messages/` | POST | Send new message in conversation |
+| `/api/messages/<id>/`         | PATCH  | Update message (e.g., mark as read)      |
