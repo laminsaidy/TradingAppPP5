@@ -37,13 +37,14 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
   - [Installation](#installation)
 8. [Testing](#testing)
 9. [Bugs](#bugs)
-10. [Future Features](#future-features)
-11. [Usage](#usage)
-12 [API Endpoints](#api-endpoints)
-13. [Database Models](#database-models)
-14. [Contributing](#contributing)
-15. [Contact](#contact)
-16. [Resources & Acknowledgements](#resources-acknowledgements)
+10. [Deployment](#deployment)
+11. [Future Features](#future-features)
+12. [Usage](#usage)
+13 [API Endpoints](#api-endpoints)
+14. [Database Models](#database-models)
+15. [Contributing](#contributing)
+16. [Contact](#contact)
+17. [Resources & Acknowledgements](#resources-acknowledgements)
 
 ## Project Features
 # Navbar
@@ -203,7 +204,7 @@ Represents a messaging thread between users about an item
 
 - One-to-Many: Messages (via ConversationMessage)
 
-### Database Schema
+# Database Schema
 
 ### `conversation` Table
 | Field        | Type      | Description                     |
@@ -231,7 +232,7 @@ Represents a messaging thread between users about an item
 | `created_by_id`   | Integer   | ForeignKey to `auth_user` (sender)   |
 | `is_read`         | Boolean   | Read status (True/False)             |
 
-### API Endpoints
+# API Endpoints
 
 | Endpoint                      | Method | Description                              |
 |-------------------------------|--------|------------------------------------------|
@@ -242,6 +243,108 @@ Represents a messaging thread between users about an item
 | `/api/conversations/<id>/`    | GET    | Retrieve specific conversation           |
 | `/api/conversations/<id>/messages/` | POST | Send new message in conversation |
 | `/api/messages/<id>/`         | PATCH  | Update message (e.g., mark as read)      |
+
+# Deployment
+
+## App Deployment
+For deploying your app, **Render** is used. Follow these steps:
+
+### Backend Deployment (Django)
+
+#### **1. Create a New Web Service**
+- Go to the [Render Dashboard](https://dashboard.render.com/).
+- Click **New Web Service** and connect your GitHub repository.
+
+#### **2. Configure the Service**
+- Choose **Python** as the environment.
+- Set the **Build Command** to:
+  ```sh
+  pip install -r requirements.txt
+  python manage.py migrate
+  ```
+- Set the **Start Command** to:
+  ```sh
+  gunicorn project_name.wsgi:application
+  ```
+
+#### **3. Set Environment Variables**
+- In the "Environment" section, add the following variables:
+  - `DATABASE_URL` → PostgreSQL database URL (Render provides one if using its database service).
+  - `SECRET_KEY` → A strong secret key for Django.
+  - `CLOUDINARY_URL` → If using Cloudinary for media storage.
+
+#### **4. Configure PostgreSQL Database (Optional)**
+- If you need a database, create a **New PostgreSQL Database** in Render.
+- Copy the **Database URL** and add it to the environment variables.
+
+#### **5. Allow Hosts & Static Files**
+- In `settings.py`, set:
+  ```python
+  ALLOWED_HOSTS = ['your-render-app.onrender.com']
+  ```
+- Configure static files:
+  ```python
+  STATIC_URL = '/static/'
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+  ```
+
+#### **6. Deploy**
+- Click **Create Web Service** and wait for the deployment to complete.
+
+---
+
+### Frontend Deployment (React)
+
+#### **1. Create a New Static Site**
+- In the Render Dashboard, click **New Static Site**.
+- Connect your React repository.
+
+#### **2. Configure the Service**
+- Set the **Build Command** to:
+  ```sh
+  npm install && npm run build
+  ```
+- Set the **Publish Directory** to:
+  ```sh
+  build
+  ```
+
+#### **3. Add Environment Variables (Optional)**
+- If using environment variables in React, add them in the Render Dashboard under **Environment**.
+
+#### **4. Deploy**
+- Click **Create Static Site** and wait for the deployment.
+
+---
+
+## Version Control
+To manage version control and push code to GitHub, follow these steps:
+
+#### **1. Add Changes**
+```sh
+git add .
+```
+
+#### **2. Commit Changes**
+```sh
+git commit -m "Your commit message"
+```
+
+#### **3. Push to GitHub**
+```sh
+git push origin main
+```
+
+---
+
+### Notes:
+- Render automatically redeploys when you push changes to GitHub.
+- Monitor logs in the Render dashboard for debugging deployment issues.
+- Set up a custom domain in Render if needed.
+
+Your Django backend and React frontend should now be successfully deployed on Render!
+
+
 
 # Contributing
 1. Fork the repository
