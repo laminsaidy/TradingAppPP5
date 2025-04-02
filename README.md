@@ -115,10 +115,49 @@ Dashboard: Overview of user activities and market trends.
 - messagin inbox: Inbox for managing conversations.
 
 # Built With
-- React.js: Frontend framework
-- Django: Backend framework
-- PostgreSQL: Database
-- Bootstrap: CSS framework
+### Technologies Used
+#### Languages
+HTML – Markup language for structuring web pages.
+
+CSS – Stylesheet language for designing the UI.
+
+JavaScript – Programming language for frontend interactivity.
+
+Python – Programming language for backend logic.
+
+#### Frontend
+React.js – JavaScript framework for building the user interface.
+
+Bootstrap v5.3 – CSS framework for responsive and modern UI design.
+
+#### Backend
+Django – High-level Python framework for backend development.
+
+Django Rest Framework (DRF) – Toolkit for building REST APIs.
+
+#### Database
+PostgreSQL – Relational database for secure and scalable data storage.
+
+#### Hosting & Deployment
+Render – Cloud platform for hosting the backend and frontend.
+
+#### Tools
+Git – Version control system for tracking code changes.
+
+GitHub – Code hosting and collaboration platform.
+
+Postman – API testing tool for backend endpoints.
+
+#### Supporting Libraries & Packages
+dj-database-url – Database configuration for Django.
+
+gunicorn – WSGI server for running Django on production.
+
+cloudinary – Cloud storage for handling media files.
+
+django-crispy-forms – Enhancing form rendering in Django.
+
+whitenoise – Static file management for Django.
 
 # Getting Started
 ## Prerequisites
