@@ -40,7 +40,6 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 10. [Usage](#usage)
 11 [API Endpoints](#api-endpoints)
 12. [Database Models](#database-models)
-13. [Roadmap](#roadmap)
 14. [Contributing](#contributing)
 16. [Contact](#contact)
 17. [Acknowledgements](#acknowledgements)
@@ -208,3 +207,14 @@ Represents a messaging thread between users about an item
 | `/api/conversations/<id>/`    | GET    | Retrieve specific conversation           |
 | `/api/conversations/<id>/messages/` | POST | Send new message in conversation |
 | `/api/messages/<id>/`         | PATCH  | Update message (e.g., mark as read)      |
+
+# Contributing
+1. Fork the repository
+
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+
+4. Push to the branch (git push origin feature/AmazingFeature)
+
+5. Open a Pull Request
