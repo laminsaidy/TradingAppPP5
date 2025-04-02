@@ -124,3 +124,11 @@ PostgreSQL installed
 ### Bugs
 If you encounter any bugs or issues, please report them in the Issues section of the repository.
 
+### Usage
+1. Signup: Create a page by signing up to become a user.
+2. Signin: After signing up, you will be directed tothe sigin form.
+3. Dashboard: View an overview of your trading activities and market trends.
+4. Trade Management: Manage your trades and portfolios.
+5. User Dashboard: Find your Items on your private user dashboard.
+6. Inbox: Find new conversations from potencial buyers through the inbox.
+
