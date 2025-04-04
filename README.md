@@ -219,6 +219,27 @@ The Trade Hub application has undergone comprehensive automated testing to ensur
 - Edge cases accounted for in test scenarios
 - Continuous integration pipeline integration
 
+## 🧪 Manual Testing Documentation
+
+### 💬 Messaging System Tests
+| Test Case | Verification Points | Status |
+|-----------|---------------------|--------|
+| **Conversation Model** | - Conversation correctly associated with item<br>- Both members included in chat<br>- Timestamps recorded properly | ✅ Pass |
+| **Inbox View** | - All conversations visible<br>- Unread message counter works<br>- Proper sorting by recent activity | ✅ Pass |
+| **New Conversation** | - Thread created on first message<br>- Correct redirect after sending<br>- Notification sent to recipient | ✅ Pass |
+
+### 🛒 Item Management Tests
+| Test Case | Verification Points | Status |
+|-----------|---------------------|--------|
+| **Item Creation** | - Form validation works<br>- Correct DB insertion<br>- Proper redirect to detail page<br>- Image upload functionality | ✅ Pass |
+| **Item Editing** | - Only owner can edit<br>- Changes persist after save<br>- Price validation works (≥0)<br>- Image updates work | ✅ Pass |
+| **Dashboard View** | - Shows only owner's items<br>- Correct item count displayed<br>- Proper pagination (if applicable) | ✅ Pass |
+
+### 🔄 Workflow Tests
+| Test Case | Verification Points | Status |
+|-----------|---------------------|--------|
+| **Create-Edit Flow** | 1. Create test item<br>2. Verify listing<br>3. Edit details<br>4. Confirm changes appear | ✅ Pass |
+| **Messaging Flow** | 1. Start new conversation<br>2. Exchange 3+ messages<br>3. Verify thread persistence | ✅ Pass |
 
 # Bugs
 If you encounter any bugs or issues, please report them in the Issues section of the repository.
