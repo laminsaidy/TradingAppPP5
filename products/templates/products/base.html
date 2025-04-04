@@ -1,348 +1,164 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
-    />
-    <title>{% block title %}{% endblock %} | Marketplace</title>
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      .content {
-        flex: 1;
-      }
+import unittest
+import socket
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
-      /* Navbar styling */
-      .navbar-brand,
-      .nav-link {
-        font-weight: 600;
-      }
+class TradingAppTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        try:
+            # Verify server connection first
+            cls.verify_server_connection()
+            
+            # Setup WebDriver
+            chrome_service = Service(ChromeDriverManager().install())
+            cls.driver = webdriver.Chrome(service=chrome_service)
+            cls.driver.implicitly_wait(5)
+            cls.base_url = "http://localhost:8000"
+            cls.wait = WebDriverWait(cls.driver, 10)
+            
+            # Test user credentials (must exist in your database)
+            cls.test_user = {
+                'username': 'testuser',
+                'password': 'Testpass123!',
+                'email': 'testuser@example.com'
+            }
+        except Exception as e:
+            print(f"\nCRITICAL SETUP ERROR: {str(e)}")
+            raise
 
-      /* Grey hover effect (no movement) */
-      .nav-hover {
-        color: black;
-        transition: color 0.3s ease;
-      }
-      .nav-hover:hover {
-        color: #6c757d;
-      }
+    @classmethod
+    def verify_server_connection(cls):
+        """Check if server is running before tests"""
+        try:
+            sock = socket.create_connection(('localhost', 8000), timeout=5)
+            sock.close()
+            print("✓ Server is running on port 8000")
+        except Exception as e:
+            raise Exception(f"Server not running at localhost:8000 - {str(e)}")
 
-      /* Hover effects for Sign Up and Log In */
-      .btn-signup {
-        background-color: #6c757d;
-        color: white;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .btn-signup:hover {
-        background-color: #5a6268;
-        color: white;
-        transform: translateY(-3px);
-      }
+    def test_0_connection(self):
+        """Verify basic server response"""
+        print("\nTesting server connection...")
+        try:
+            self.driver.get(self.base_url)
+            print(f"Current URL: {self.driver.current_url}")
+            print(f"Page title: {self.driver.title}")
+            print(f"Page source snippet: {self.driver.page_source[:500]}...")
+            self.assertTrue(self.driver.title, "Page title is empty")
+            print("✓ Basic connection established")
+        except Exception as e:
+            self.fail(f"Connection failed: {str(e)}")
 
-      .btn-login {
-        background-color: #28a745;
-        color: white;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .btn-login:hover {
-        background-color: #218838;
-        color: white;
-        transform: translateY(-3px);
-      }
+    def test_1_homepage_load(self):
+        """Flexible homepage test"""
+        print("\nTesting homepage...")
+        try:
+            self.driver.get(self.base_url)
+            
+            # Wait for any content
+            self.wait.until(
+                EC.presence_of_element_located((By.XPATH, "//*[text()]"))
+            )
+            
+            # Verify basic content
+            body_text = self.driver.find_element(By.TAG_NAME, "body").text
+            self.assertTrue(len(body_text) > 0, "Page has no content")
+            print(f"Page content: {body_text[:100]}...")
+            print("✓ Homepage loaded with content")
+        except Exception as e:
+            self.driver.save_screenshot("homepage_error.png")
+            self.fail(f"Homepage failed: {str(e)}\nCurrent URL: {self.driver.current_url}")
 
-      /* Dashboard and Inbox button styles */
-      .btn-dashboard {
-        background-color: #007bff;
-        color: white;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .btn-dashboard:hover {
-        background-color: #0056b3;
-        color: white;
-        transform: translateY(-3px);
-      }
+    def test_2_signup(self):
+        """Flexible signup test"""
+        print("\nTesting signup...")
+        try:
+            self.driver.get(f"{self.base_url}/signup")
+            
+            # Debug output
+            print("\nPage source snippet:")
+            print(self.driver.page_source[:1000])
+            
+            # Generate test data
+            timestamp = str(int(time.time()))
+            test_data = {
+                'username': f"testuser{timestamp}",
+                'email': f"test{timestamp}@example.com",
+                'password': "Testpass123!"
+            }
+            
+            # Field mapping with fallbacks
+            field_map = {
+                'username': ['id_username', 'name=username', 'input[type="text"]'],
+                'email': ['id_email', 'name=email'],
+                'password1': ['id_password1', 'name=password1'],
+                'password2': ['id_password2', 'name=password2']
+            }
+            
+            # Fill form with flexible selectors
+            for field, selectors in field_map.items():
+                element = None
+                for selector in selectors:
+                    try:
+                        if selector.startswith('id_'):
+                            element = self.driver.find_element(By.ID, selector[3:])
+                        elif selector.startswith('name='):
+                            element = self.driver.find_element(By.NAME, selector[5:])
+                        else:
+                            element = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        element.send_keys(test_data.get(field.replace('1', ''), ''))
+                        break
+                    except:
+                        continue
+                
+                if not element:
+                    self.fail(f"Could not find {field} field")
+            
+            # Submit form
+            submit_buttons = [
+                "//button[contains(., 'Sign Up')]",
+                "//button[contains(., 'Register')]",
+                "//input[@type='submit']"
+            ]
+            
+            for button in submit_buttons:
+                try:
+                    self.driver.find_element(By.XPATH, button).click()
+                    break
+                except:
+                    continue
+            else:
+                self.fail("Could not find submit button")
+            
+            # Verify success
+            try:
+                self.wait.until(EC.any_of(
+                    EC.url_contains("dashboard"),
+                    EC.presence_of_element_located((By.CSS_SELECTOR, ".alert-success")),
+                    EC.title_contains("Welcome")
+                ))
+                print("✓ Signup successful")
+            except TimeoutException:
+                errors = self.driver.find_elements(By.CSS_SELECTOR, ".error, .alert-danger")
+                if errors:
+                    self.fail(f"Signup errors: {[e.text for e in errors]}")
+                self.driver.save_screenshot("signup_error.png")
+                self.fail("Signup success not detected")
+                
+        except Exception as e:
+            self.driver.save_screenshot("signup_failure.png")
+            self.fail(f"Signup failed: {str(e)}")
 
-      .btn-inbox {
-        background-color: #ffc107;
-        color: white;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .btn-inbox:hover {
-        background-color: #e0a800;
-        color: white;
-        transform: translateY(-3px);
-      }
+    @classmethod
+    def tearDownClass(cls):
+        if hasattr(cls, 'driver'):
+            cls.driver.quit()
 
-      /* Footer styling */
-      .footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background-color: #343a40;
-        color: white;
-        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-      }
-      .footer-links {
-        display: flex;
-        gap: 16px;
-      }
-      .footer-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-      .footer-links a:hover {
-        color: #cccccc;
-      }
-      .copyright {
-        font-size: 14px;
-        color: #cccccc;
-      }
-      .copyright a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-      .copyright a:hover {
-        color: #cccccc;
-      }
-
-      /* Modern form styling */
-      .modern-form {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .modern-textarea {
-        border: 2px solid #ced4da;
-        border-radius: 8px;
-        padding: 12px;
-        font-size: 16px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .modern-textarea:focus {
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        outline: none;
-      }
-
-      .modern-input {
-        border: 2px solid #ced4da;
-        border-radius: 8px;
-        padding: 10px;
-        font-size: 16px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .modern-input:focus {
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        outline: none;
-      }
-
-      .modern-submit-btn {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .modern-submit-btn:hover {
-        background-color: #0056b3;
-      }
-
-      /* Custom styling for trending items */
-      .trending-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: #ff6b6b;
-        color: white;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        transition: transform 0.3s ease;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'products:index' %}"
-            >Trade Hub</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <!-- Reordered Navbar items -->
-              <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'products:menu' %}"
-                  >Menu</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'products:about' %}"
-                  >About</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'item:index' %}"
-                  >Browse Items</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'item:create' %}"
-                  >New Item</a
-                >
-              </li>
-              {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-dashboard mx-2"
-                  href="{% url 'dashboard:index' %}"
-                  >Dashboard</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-inbox mx-2"
-                  href="{% url 'conversation:inbox' %}"
-                  >Inbox</a
-                >
-              </li>
-              <li class="nav-item">
-                <form method="post" action="{% url 'products:logout' %}">
-                  {% csrf_token %}
-                  <button type="submit" class="btn btn-login mx-2">
-                    Log Out
-                  </button>
-                </form>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-signup mx-2"
-                  href="{% url 'products:signup' %}"
-                  >Sign Up</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-login mx-2"
-                  href="{% url 'products:login' %}"
-                  >Log In</a
-                >
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Main Content -->
-      <div class="content container mt-4">
-        {% if messages %}
-          <div class="container mt-3">
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-        {% block content %} {% endblock %}
-      </div>
-
-      <!-- Footer -->
-      <footer class="footer mt-5">
-        <div class="footer-links">
-          <a href="{% url 'products:contact' %}">Contact</a>
-          <a href="{% url 'products:privacy_policy' %}">Privacy Policy</a>
-          <a href="{% url 'products:terms_of_service' %}">Terms of Service</a>
-        </div>
-        <div class="copyright">
-          &copy; Copyright 2025
-          <a href="https://github.com/laminsaidy/MarketplaceP5" target="_blank"
-            >Lamin Saidy</a
-          >
-        </div>
-      </footer>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Function to display a brief alert message
-      function showAlert(message) {
-        const alertBox = document.createElement("div");
-        alertBox.className =
-          "alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 p-2";
-        alertBox.style.zIndex = 1050;
-        alertBox.style.width = "fit-content";
-        alertBox.style.opacity = 0;
-        alertBox.style.transition = "opacity 0.5s ease";
-        alertBox.innerText = message;
-        document.body.appendChild(alertBox);
-
-        // Fade in the alert
-        setTimeout(() => {
-          alertBox.style.opacity = 1;
-        }, 10);
-
-        // Automatically remove the alert after 3 seconds
-        setTimeout(() => {
-          alertBox.style.opacity = 0;
-          setTimeout(() => {
-            document.body.removeChild(alertBox);
-          }, 500);
-        }, 3000);
-      }
-
-      // Check for messages in the URL and display alerts
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has("message")) {
-        showAlert(urlParams.get("message"));
-      }
-    </script>
-  </body>
-</html>
+if __name__ == "__main__":
+    unittest.main()
