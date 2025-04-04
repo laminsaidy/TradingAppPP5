@@ -29,7 +29,7 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 3. [Design](#design)
   - [Reseach](#research)
   - [Fonts](#fonts)
-4. [Wireframes](#wireframes)
+4. [Wireframe/App-sketch](#wireframe-app-sketch)
 5. [Built With](#built-with)
 6. [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -39,7 +39,7 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 9. [Bugs](#bugs)
 10. [Deployment](#deployment)
 11. [Future Features](#future-features)
-12 [API Endpoints](#api-endpoints)
+12. [API Endpoints](#api-endpoints)
 13. [Database Models](#database-models)
 14. [Contributing](#contributing)
 15. [Contact](#contact)
@@ -112,6 +112,20 @@ Dashboard: Overview of user activities and market trends.
 - Trade Management: Tools for managing trades and portfolios.
 - User Profile: Personalized settings and preferences.
 - messagin inbox: Inbox for managing conversations.
+
+# TradeHub App Layout Wireframe
+
+Below is a layout sketch of the TradeHub application. This wireframe illustrates the basic structure and arrangement of the main components I planned to build within the app. 
+
+![TradeHub Layout Sketch](static/images/Wireframe.png)
+
+### Description
+
+- **Header**: Displays the app name "TradeHub" on the top left.
+- **Navbar**: Positioned slightly to the top right corner, providing navigation links.
+- **Main Content Area**: The central area where the primary content of the app is displayed.
+- **Footer**: Contains copyright information and links such as "Contact", "Privacy Policy", "Terms of Service", and "GitHub" on the bottom left.
+
 
 # Built With
 ### Technologies Used
