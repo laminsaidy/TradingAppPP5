@@ -272,6 +272,13 @@ The Trade Hub application has undergone comprehensive automated testing to ensur
 | **Create-Edit Flow** | 1. Create test item<br>2. Verify listing<br>3. Edit details<br>4. Confirm changes appear | ✅ Pass |
 | **Messaging Flow** | 1. Start new conversation<br>2. Exchange 3+ messages<br>3. Verify thread persistence | ✅ Pass |
 
+# Validator testing
+**The project was tested using the W3C Markup Validation Service and W3C CSS Validation Service to ensure that the code meets industry standards.**
+![Nu Html Checker results](static/images/html.png)
+![W3C CSS Validator results](static/images/w3css.png)
+
+
+
 # Bugs
 If you encounter any bugs or issues, please report them in the Issues section of the repository.
 
