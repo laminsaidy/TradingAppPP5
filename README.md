@@ -66,8 +66,8 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 
 # New Item Page
 **Intuitive listing creation with title, description, price, category and image uploads.**
-![New Item Page](static/images/NewItem1.png)
-![New Item Page](static/images/NewItem2.png)
+![New Item Page](static/images/Newitem1.png)
+![New Item Page](static/images/Newitem2.png)
 
 
 
