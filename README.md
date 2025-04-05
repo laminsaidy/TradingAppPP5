@@ -82,6 +82,10 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 **Users access their messaging center here to communicate with potential buyers/sellers. The interface displays conversation threads and enables real-time messaging.**
 ![Inbox Page](static/images/Inbox.png)
 
+# User Dashboard
+**A centralized control panel for profile management (edit details, photos etc) and active listings (edit/delete products).**  
+![User Dashboard Page](static/images/Userdashboard.png)
+
 # 404 Error Page
 **This custom error page appears when users attempt to access non-existent content, featuring helpful navigation options to return to active sections of TradeHub.**
 
