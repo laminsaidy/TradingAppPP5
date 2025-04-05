@@ -17,6 +17,8 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
   - [Navbar](#navbar)
   - [Footer](#footer)
   - [About Page](#home-page)
+  - [Browse Item Page](#browse-item-page)
+  - [New Item Page](#new-item-page)
   - [Menu Page](#menu-page)
   - [Contact form](#contact-form)
   - [Sign Up Form](#sign-out-form)
@@ -57,6 +59,17 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 # About
 **The about page introduces TradeHub's mission as a peer-to-peer trading platform. It highlights key features like secure messaging and local trading, along with team information. Users can also access a direct link to my Github project and the Sign up page.** 
 ![Footer](static/images/About.png)
+
+# Browse Item Page
+**Search and filter available products with detailed views of seller info and pricing.** 
+![Browse Item Page](static/images/BrowseItem.png)
+
+# New Item Page
+**Intuitive listing creation with title, description, price, category and image uploads.**
+![New Item Page](static/images/NewItem1.png)
+![New Item Page](static/images/NewItem2.png)
+
+
 
 # Menu Page
 **The menu page displays the trending products for users to see the latest items directly in the page.**
