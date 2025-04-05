@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
-    />
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <title>{% block title %}{% endblock %} | Marketplace</title>
     <style>
       html,
@@ -26,14 +24,10 @@
       .content {
         flex: 1;
       }
-
-      /* Navbar styling */
       .navbar-brand,
       .nav-link {
         font-weight: 600;
       }
-
-      /* Grey hover effect (no movement) */
       .nav-hover {
         color: black;
         transition: color 0.3s ease;
@@ -41,8 +35,6 @@
       .nav-hover:hover {
         color: #6c757d;
       }
-
-      /* Hover effects for Sign Up and Log In */
       .btn-signup {
         background-color: #6c757d;
         color: white;
@@ -53,7 +45,6 @@
         color: white;
         transform: translateY(-3px);
       }
-
       .btn-login {
         background-color: #28a745;
         color: white;
@@ -64,8 +55,6 @@
         color: white;
         transform: translateY(-3px);
       }
-
-      /* Dashboard and Inbox button styles */
       .btn-dashboard {
         background-color: #007bff;
         color: white;
@@ -76,7 +65,6 @@
         color: white;
         transform: translateY(-3px);
       }
-
       .btn-inbox {
         background-color: #ffc107;
         color: white;
@@ -87,8 +75,6 @@
         color: white;
         transform: translateY(-3px);
       }
-
-      /* Footer styling */
       .footer {
         display: flex;
         justify-content: space-between;
@@ -122,8 +108,6 @@
       .copyright a:hover {
         color: #cccccc;
       }
-
-      /* Modern form styling */
       .modern-form {
         max-width: 600px;
         margin: 0 auto;
@@ -132,7 +116,6 @@
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-
       .modern-textarea {
         border: 2px solid #ced4da;
         border-radius: 8px;
@@ -140,13 +123,11 @@
         font-size: 16px;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
-
       .modern-textarea:focus {
         border-color: #80bdff;
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         outline: none;
       }
-
       .modern-input {
         border: 2px solid #ced4da;
         border-radius: 8px;
@@ -154,13 +135,11 @@
         font-size: 16px;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
-
       .modern-input:focus {
         border-color: #80bdff;
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         outline: none;
       }
-
       .modern-submit-btn {
         background-color: #007bff;
         color: white;
@@ -171,12 +150,9 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
       }
-
       .modern-submit-btn:hover {
         background-color: #0056b3;
       }
-
-      /* Custom styling for trending items */
       .trending-badge {
         position: absolute;
         top: 10px;
@@ -196,12 +172,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'products:index' %}"
-            >Trade Hub</a
-          >
+          <a class="navbar-brand" href="{% url 'products:index' %}">Trade Hub</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -209,70 +182,42 @@
             data-bs-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <!-- Reordered Navbar items -->
               <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'products:menu' %}"
-                  >Menu</a
-                >
+                <a class="nav-link nav-hover" href="{% url 'products:menu' %}">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'products:about' %}"
-                  >About</a
-                >
+                <a class="nav-link nav-hover" href="{% url 'products:about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'item:index' %}"
-                  >Browse Items</a
-                >
+                <a class="nav-link nav-hover" href="{% url 'item:index' %}">Browse Items</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-hover" href="{% url 'item:create' %}"
-                  >New Item</a
-                >
+                <a class="nav-link nav-hover" href="{% url 'item:create' %}">New Item</a>
               </li>
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a
-                  class="nav-link btn btn-dashboard mx-2"
-                  href="{% url 'dashboard:index' %}"
-                  >Dashboard</a
-                >
+                <a class="nav-link btn btn-dashboard mx-2" href="{% url 'dashboard:index' %}">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link btn btn-inbox mx-2"
-                  href="{% url 'conversation:inbox' %}"
-                  >Inbox</a
-                >
+                <a class="nav-link btn btn-inbox mx-2" href="{% url 'conversation:inbox' %}">Inbox</a>
               </li>
               <li class="nav-item">
                 <form method="post" action="{% url 'products:logout' %}">
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-login mx-2">
-                    Log Out
-                  </button>
+                  <button type="submit" class="btn btn-login mx-2">Log Out</button>
                 </form>
               </li>
               {% else %}
               <li class="nav-item">
-                <a
-                  class="nav-link btn btn-signup mx-2"
-                  href="{% url 'products:signup' %}"
-                  >Sign Up</a
-                >
+                <a class="nav-link btn btn-signup mx-2" href="{% url 'products:signup' %}">Sign Up</a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link btn btn-login mx-2"
-                  href="{% url 'products:login' %}"
-                  >Log In</a
-                >
+                <a class="nav-link btn btn-login mx-2" href="{% url 'products:login' %}">Log In</a>
               </li>
               {% endif %}
             </ul>
@@ -280,12 +225,10 @@
         </div>
       </nav>
 
-      <!-- Main Content -->
       <div class="content container mt-4">
         {% block content %} {% endblock %}
       </div>
 
-      <!-- Footer -->
       <footer class="footer mt-5">
         <div class="footer-links">
           <a href="{% url 'products:contact' %}">Contact</a>
@@ -294,33 +237,27 @@
         </div>
         <div class="copyright">
           &copy; Copyright 2025
-          <a href="https://github.com/laminsaidy/MarketplaceP5" target="_blank"
-            >Lamin Saidy</a
-          >
+          <a href="https://github.com/laminsaidy/MarketplaceP5" target="_blank" rel="noopener noreferrer">Lamin Saidy</a>
         </div>
       </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Function to display a brief alert message
       function showAlert(message) {
         const alertBox = document.createElement("div");
-        alertBox.className =
-          "alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 p-2";
+        alertBox.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 p-2";
         alertBox.style.zIndex = 1050;
         alertBox.style.width = "fit-content";
         alertBox.style.opacity = 0;
         alertBox.style.transition = "opacity 0.5s ease";
-        alertBox.innerText = message;
+        alertBox.textContent = message;
         document.body.appendChild(alertBox);
 
-        // Fade in the alert
         setTimeout(() => {
           alertBox.style.opacity = 1;
         }, 10);
 
-        // Automatically remove the alert after 3 seconds
         setTimeout(() => {
           alertBox.style.opacity = 0;
           setTimeout(() => {
@@ -329,7 +266,6 @@
         }, 3000);
       }
 
-      // Check for messages in the URL and display alerts
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has("message")) {
         showAlert(urlParams.get("message"));
