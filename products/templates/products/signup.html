@@ -4,42 +4,37 @@
 
 {% block content %}
 <style>
-    /* Custom background color and styling */
     .signup-container {
-        background: #f8f9fa; 
-        min-height: 100vh; 
+        background: #f8f9fa;
+        min-height: 100vh;
         padding: 20px;
     }
     .signup-form {
-        background: white; 
+        background: white;
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     .signup-form h1 {
-        color: #333; 
+        color: #333;
     }
     .signup-form label {
-        color: #555; 
+        color: #555;
     }
     .signup-form .btn-primary {
-        background-color: #28a745; 
+        background-color: #28a745;
         border: none;
     }
     .signup-form .btn-primary:hover {
-        background-color: #218838; 
+        background-color: #218838;
     }
 </style>
-
 <div class="signup-container d-flex align-items-center justify-content-center">
     <div class="col-md-6">
         <div class="signup-form">
             <h1 class="mb-4 text-center" style="color: #0d6efd;">Sign Up</h1>
-
             <form method="post" action="." class="needs-validation" novalidate>
                 {% csrf_token %}
-
-                <!-- Username Field -->
                 <div class="mb-3">
                     <label for="id_username" class="form-label">Username</label>
                     {{ form.username }}
@@ -47,8 +42,6 @@
                         Please choose a username.
                     </div>
                 </div>
-
-                <!-- Email Field -->
                 <div class="mb-3">
                     <label for="id_email" class="form-label">Email</label>
                     {{ form.email }}
@@ -56,8 +49,6 @@
                         Please provide a valid email.
                     </div>
                 </div>
-
-                <!-- Password Field -->
                 <div class="mb-3">
                     <label for="id_password1" class="form-label">Password</label>
                     {{ form.password1 }}
@@ -65,8 +56,6 @@
                         Please enter a password.
                     </div>
                 </div>
-
-                <!-- Repeat Password Field -->
                 <div class="mb-3">
                     <label for="id_password2" class="form-label">Repeat Password</label>
                     {{ form.password2 }}
@@ -74,8 +63,6 @@
                         Passwords must match.
                     </div>
                 </div>
-
-                <!-- Form Errors -->
                 {% if form.errors or form.non_field_errors %}
                     <div class="alert alert-danger mb-3">
                         {% for field in form %}
@@ -84,8 +71,6 @@
                         {{ form.non_field_errors }}
                     </div>
                 {% endif %}
-
-                <!-- Submit Button -->
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </div>
@@ -93,16 +78,10 @@
         </div>
     </div>
 </div>
-
-<!-- Bootstrap Form Validation Script -->
 <script>
     (function () {
         'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
@@ -110,7 +89,6 @@
                         event.preventDefault()
                         event.stopPropagation()
                     }
-
                     form.classList.add('was-validated')
                 }, false)
             })

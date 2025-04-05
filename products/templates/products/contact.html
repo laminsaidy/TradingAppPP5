@@ -6,68 +6,54 @@
         <div class="col-lg-8">
             <div class="contact-card p-4 p-md-5 shadow-lg rounded-4">
                 <h1 class="display-4 fw-bold mb-4 text-gradient">Contact Us</h1>
-                
                 <div class="row g-4">
-                    <!-- Contact Information -->
                     <div class="col-md-6">
                         <div class="contact-info p-4 h-100 rounded-3" style="background-color: #f8f9fa;">
                             <h3 class="h4 mb-4"><i class="bi bi-envelope me-2"></i>Contact Details</h3>
-                            
                             <div class="mb-4">
                                 <h4 class="h6 text-muted mb-2"><i class="bi bi-geo-alt"></i> Address</h4>
                                 <p>Marienplatz 8<br>80331 Munich, Germany</p>
                             </div>
-                            
                             <div class="mb-4">
                                 <h4 class="h6 text-muted mb-2"><i class="bi bi-telephone"></i> Phone</h4>
                                 <p>+49 (0)124 758 9645</p>
                             </div>
-                            
                             <div class="mb-4">
                                 <h4 class="h6 text-muted mb-2"><i class="bi bi-envelope"></i> Email</h4>
                                 <p>nimalydias@gmail.com</p>
                             </div>
-                            
                             <div class="opening-hours mt-4">
                                 <h4 class="h6 text-muted mb-2"><i class="bi bi-clock"></i> Opening Hours</h4>
                                 <p>Monday-Friday: 9am-6pm<br>Saturday: 10am-4pm<br>Sunday: Closed</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Contact Form -->
                     <div class="col-md-6">
                         <div class="contact-form">
                             <h3 class="h4 mb-4"><i class="bi bi-send me-2"></i>Send a Message</h3>
                             <form method="post">
                                 {% csrf_token %}
-                                
                                 {{ form.non_field_errors }}
-                                
                                 <div class="mb-3">
                                     <label for="{{ form.name.id_for_label }}">Your Name</label>
                                     {{ form.name }}
                                     {{ form.name.errors }}
                                 </div>
-                                
                                 <div class="mb-3">
                                     <label for="{{ form.email.id_for_label }}">Email Address</label>
                                     {{ form.email }}
                                     {{ form.email.errors }}
                                 </div>
-                                
                                 <div class="mb-3">
                                     <label for="{{ form.subject.id_for_label }}">Subject</label>
                                     {{ form.subject }}
                                     {{ form.subject.errors }}
                                 </div>
-                                
                                 <div class="mb-3">
                                     <label for="{{ form.message.id_for_label }}">Message</label>
                                     {{ form.message }}
                                     {{ form.message.errors }}
                                 </div>
-                                
                                 <button type="submit" class="btn modern-submit-btn w-100">
                                     <i class="bi bi-send-fill me-2"></i>Send Message
                                 </button>
@@ -75,40 +61,15 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Map Section -->
                 <div class="mt-5">
                     <h3 class="h4 mb-3"><i class="bi bi-map me-2"></i>Our Location</h3>
                     <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.965632078582!2d11.5757343156548!3d48.13715417922346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f9a38c5fd9%3A0x10cb84a7db1987d!2sMarienplatz%2C%2080351%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1711300000000!5m2!1sen!2sus" 
-                                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.965632078582!2d11.5757343156548!3d48.13715417922346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f9a38c5fd9%3A0x10cb84a7db1987d!2sMarienplatz%2C%2080351%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1711300000000!5m2!1sen!2sus"
+                                style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .text-gradient {
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .contact-card {
-        background: white;
-        border: none;
-    }
-    .modern-input, .modern-textarea {
-        border: 2px solid #ced4da;
-        border-radius: 8px;
-        padding: 10px;
-        transition: border-color 0.3s ease;
-    }
-    .modern-input:focus, .modern-textarea:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-    }
-</style>
 {% endblock %}

@@ -1,40 +1,19 @@
 {% extends 'products/base.html' %}
-{% load static %}  <!-- Load the static template tag -->
+{% load static %}
 
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<style>
-  .section-title {
-    font-weight: bolder;
-    font-size: 2.5rem;
-    color: #343a40;
-  }
-  .section-bg {
-    background-color: #f8f9fa;
-    border-radius: 1rem;
-    padding: 2rem;
-  }
-</style>
-
 <div class="mt-6 px-4 py-5 section-bg">
   <h2 class="mb-4 text-center section-title">Newest items</h2>
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for item in items %}
     <div class="col">
       <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-reset">
         <div class="card h-100 shadow-sm">
-          <!-- Check if item.image exists -->
           {% if item.image %}
-            <img
-              src="{{ item.image.url }}"
-              class="card-img-top rounded-top-3"
-              alt="{{ item.name }}"
-              onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';"
-            />
+            <img src="{{ item.image.url }}" class="card-img-top rounded-top-3" alt="{{ item.name }}" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
           {% else %}
-            <!-- Display a placeholder image or message if no image is available -->
             <div class="card-img-top rounded-top-3 bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
               <p class="text-muted">No image available</p>
             </div>
@@ -49,10 +28,8 @@
     {% endfor %}
   </div>
 </div>
-
 <div class="mt-6 px-4 py-5 section-bg">
   <h2 class="mb-4 text-center section-title">Categories</h2>
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for category in categories %}
     <div class="col">
