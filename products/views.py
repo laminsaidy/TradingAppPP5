@@ -13,7 +13,10 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your message has been sent successfully!')
             return redirect('products:contact_thanks')
+        else:
+            messages.error(request, 'Please correct the errors in the form.')
     else:
         form = ContactForm()
     return render(request, 'products/contact.html', {'form': form})
@@ -23,6 +26,8 @@ def contact_thanks(request):
 
 def menu(request):
     trending_items = Item.objects.filter(is_sold=False).order_by('-created_at')[:12]
+    if not trending_items.exists():
+        messages.info(request, 'No trending items available at the moment.')
     return render(request, 'products/menu.html', {
         'trending_items': trending_items
     })
@@ -30,6 +35,10 @@ def menu(request):
 def index(request):
     items = Item.objects.filter(is_sold=False)[0:6]
     categories = Category.objects.all()
+    
+    if not items.exists():
+        messages.info(request, 'No featured items available yet.')
+    
     return render(request, 'products/index.html', {
         'categories': categories,
         'items': items,
@@ -44,7 +53,10 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, f'Welcome back, {username}!')
                 return redirect('products:index')
+        else:
+            messages.error(request, 'Invalid username or password.')
     else:
         form = AuthenticationForm()
     return render(request, 'products/login.html', {'form': form})
@@ -53,9 +65,11 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account is created, please login in')
+            user = form.save()
+            messages.success(request, 'Account created successfully! Please log in.')
             return redirect('products:login')
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = SignupForm()
     return render(request, 'products/signup.html', {'form': form})
@@ -65,6 +79,7 @@ def about(request):
 
 def custom_logout(request):
     logout(request)
+    messages.info(request, 'You have been logged out successfully.')
     return redirect('products:login')
 
 def privacy_policy(request):
