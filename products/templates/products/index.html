@@ -9,7 +9,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for item in items %}
     <div class="col">
-      <a href="{% url 'item:detail' item.id %}" class="text-decoration-none text-reset">
+      <a href="{% url 'item:item_detail' item.id %}" class="text-decoration-none text-reset">
         <div class="card h-100 shadow-sm">
           {% if item.image %}
             <img src="{{ item.image.url }}" class="card-img-top rounded-top-3" alt="{{ item.name }}" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
