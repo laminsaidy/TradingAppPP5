@@ -4,10 +4,9 @@ from . import views
 app_name = 'item'
 
 urlpatterns = [
-    path('', views.browse_items, name='index'), 
-    path('create/', views.create_item, name='create'),  
-    path('detail/<int:pk>/', views.detail, name='detail'),
-    path('<int:pk>/delete/', views.DeleteButton, name='delete'), 
-    path('edit/<int:pk>/', views.EditButton, name='edit'), 
-     
+    path('', views.browse_items, name='browse_items'),  # Changed from 'index' to 'browse_items'
+    path('new/', views.create_item, name='create_item'),  # Changed from 'create' to 'create_item'
+    path('<int:pk>/', views.item_detail, name='item_detail'),  # Changed from 'detail' to 'item_detail'
+    path('<int:pk>/delete/', views.delete_item, name='delete_item'),  # Changed from 'delete' and function name
+    path('<int:pk>/edit/', views.edit_item, name='edit_item'),  # Changed from 'edit' and function name
 ]
