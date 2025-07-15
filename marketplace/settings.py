@@ -44,7 +44,7 @@ SECRET_KEY = 'django-insecure-3ouy(@%)=!5_#cr9_tlo)kt#p%76*p=f$@1v@rez@txj0gzorp
 # Debug and hosts
 DEBUG = False
 # Add to ALLOWED_HOSTS (replace 'your-app-name' with your future Render URL)
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'MyTradeHub.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mytradehub.onrender.com']
 
 # Static files (required even if only images available)
 STATIC_URL = '/static/'
