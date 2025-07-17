@@ -67,8 +67,8 @@
 
         {% if request.user == item.created_by %}
             <div class="mt-4">
-                <a href="{% url 'item:edit' item.id %}" class="edit-btn w-100 text-center d-block mb-3">Edit</a>
-                <a href="{% url 'item:delete' item.id %}" class="delete-btn w-100 text-center d-block" onclick="return confirmDelete()">Delete</a>
+                <a href="{% url 'item:edit_item' item.id %}" class="edit-btn w-100 text-center d-block mb-3">Edit</a>
+                <a href="{% url 'item:delete_item' item.id %}" class="delete-btn w-100 text-center d-block" onclick="return confirmDelete()">Delete</a>
             </div>
         {% else %}
             <a href="{% url 'conversation:new' item.id %}" class="btn btn-primary contact-seller-btn w-100 mt-3">
@@ -85,7 +85,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for related_item in related_items %}
         <div class="col">
-            <a href="{% url 'item:detail' related_item.id %}" class="text-decoration-none text-reset">
+            <a href="{% url 'item:item_detail' related_item.id %}" class="text-decoration-none text-reset">
                 <div class="card h-100 shadow-sm">
                     <img src="{% if related_item.image %}{{ related_item.image.url }}?c=fill,f_auto,w_400,h_300{% else %}{% static 'images/default-image.jpg' %}{% endif %}"
                          class="card-img-top rounded-top-3"
