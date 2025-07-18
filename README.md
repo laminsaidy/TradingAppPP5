@@ -252,6 +252,31 @@ The Trade Hub application has undergone comprehensive automated testing to ensur
 
 ## 🧪 Manual Testing Documentation
 
+### 🛒 Item Management Tests
+
+| Test Case       | Verification Points                                                                                                                                       | Status   |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| **Item Creation** | - Form validation works:<br>  • Name: min 3 characters<br>  • Description: min 10 characters<br>  • Price: > 0<br>  • Image: max 2MB, must be valid image<br>- Error messages display<br>- Correct DB insertion<br>- Proper redirect to detail page | ✅ Pass |
+| **Item Editing**  | - Only owner can edit<br>- Same validation as creation<br>- Changes persist<br>- Image updates work                                                     | ✅ Pass |
+| **Dashboard View**| - Shows only owner's items<br>- Correct item count displayed<br>- Proper pagination (if applicable)                                                     | ✅ Pass |
+
+### 📸 Validation Error Screenshots
+
+Below are visual confirmations of each validation working correctly during manual testing:
+
+#### 🔤 Name Too Short (less than 3 characters)
+![Name validation error](static/images/nameerror(287).png)
+
+#### 📝 Description Too Short (less than 10 characters)
+![Description validation error](static/images/descriptionerror(290).png)
+
+#### 💰 Invalid Price (zero or negative)
+![Price validation error](static/images/priceerror.png)
+
+#### 🖼️ Invalid Image (too large or wrong format)
+![Image validation error](static/images/imageerror.png)
+
+
 ### 💬 Messaging System Tests
 | Test Case | Verification Points | Status |
 |-----------|---------------------|--------|
