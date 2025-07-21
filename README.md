@@ -54,17 +54,21 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 **The navigation bar adapts to the current site section, providing easy access to different pages. It remains fixed at the top of the screen for convenient navigation.**
 ![Navbar](static/images/Navbar.png)
 
+
 # Footer
 **A footer which displays the Contac page, Privacy policy, Terms of service, copyrights for the website & a linkt to my Github repo.**
 ![Footer](static/images/Footer.png)
+
 
 # About
 **The about page introduces TradeHub's mission as a peer-to-peer trading platform. It highlights key features like secure messaging and local trading, along with team information. Users can also access a direct link to my Github project and the Sign up page.** 
 ![Footer](static/images/About.png)
 
+
 # Browse Item Page
 **Search and filter available products with detailed views of seller info and pricing.** 
 ![Browse Item Page](static/images/BrowseItem.png)
+
 
 # New Item Page
 **Intuitive listing creation with title, description, price, category and image uploads.**
@@ -72,42 +76,50 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 ![New Item Page](static/images/Newitem2.png)
 
 
-
 # Menu Page
 **The menu page displays the trending products for users to see the latest items directly in the page.**
 ![Menu Page](static/images/Menu.png)
+
 
 # Contact Form
 **The contact page allows users to reach out to the TradeNest support team with inquiries or feedback. It includes a form with name, email, and message fields for easy communication.**
 ![Contact Form](static/images/Contact.png)
 
+
 # Sign Up Form
 **New users can create a TradeHub account through this page. The form collects essential details including username, email, password, and location to enable local trading features.**
 ![Sign Up Form](static/images/Signup.png)
+
 
 # Signin Form
 **Registered users authenticate to access their TradeNest account on this page. The clean interface features email/password fields and a "Forgot Password" option.**
 ![Sign In Form](static/images/Signin.png)
 
+
 # Admin Dashboard
 **The admin interface provides comprehensive management tools for platform oversight, including user management, listing moderation, and system analytics.**
 ![Admin Dashboard](static/images/Admin.png)
+
 
 # Inbox Page
 **Users access their messaging center here to communicate with potential buyers/sellers. The interface displays conversation threads and enables real-time messaging.**
 ![Inbox Page](static/images/Inbox.png)
 
+
 # User Dashboard
 **A centralized control panel for profile management (edit details, photos etc) and active listings (edit/delete products).**  
 ![User Dashboard Page](static/images/Userdashboard.png)
+
 
 # 404 Error Page
 **This custom error page appears when users attempt to access non-existent content, featuring helpful navigation options to return to active sections of TradeHub.**
 
 ![404 Error Page](static/images/404.png)
 
+
 # Target Audience
 TradingAppPP5 is designed for traders and investors who need a comprehensive platform to manage their trades, track market trends, and make informed decisions. The application aims to provide a user-friendly interface that caters to both beginners and experienced traders.
+
 
 # Design
 ### Research
@@ -155,12 +167,12 @@ Features were prioritized using the MoSCoW framework to align development with c
 - ✅ Encrypted messaging between users  
 - ✅ Search and browse functionality  
 
-#### :large_orange_diamond: **Should** (Important UX improvements)
+#### :grey_circle: **Should** (Important UX improvements)
 - 🔄 Price range filtering (in progress)  
 - 📍 Location-based discovery (planned)  
 - 🎨 Profile customization options  
 
-#### :yellow_circle: **Could** (Nice-to-have enhancements)
+#### :blue_circle: **Could** (Nice-to-have enhancements)
 - 💝 Wishlist functionality  
 - 🌙 Dark mode toggle  
 - 📱 Social media sharing  
