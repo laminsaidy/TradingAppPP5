@@ -145,6 +145,31 @@ Below is a layout sketch of the TradeHub application. This wireframe illustrates
 - **Main Content Area**: The central area where the primary content of the app is displayed.
 - **Footer**: Contains copyright information and links such as "Contact", "Privacy Policy", "Terms of Service", and "GitHub" on the bottom left.
 
+### Agile Prioritization (MoSCoW Method)
+
+Features were prioritized using the MoSCoW framework to align development with core MVP goals. This ensured critical functionality ("Must") was delivered first, while optional enhancements ("Could") were deferred.
+
+#### :red_circle: **Must** (Core functionality required for launch)
+- ✅ Secure user authentication system  
+- ✅ Basic item listing and management  
+- ✅ Encrypted messaging between users  
+- ✅ Search and browse functionality  
+
+#### :large_orange_diamond: **Should** (Important UX improvements)
+- 🔄 Price range filtering (in progress)  
+- 📍 Location-based discovery (planned)  
+- 🎨 Profile customization options  
+
+#### :yellow_circle: **Could** (Nice-to-have enhancements)
+- 💝 Wishlist functionality  
+- 🌙 Dark mode toggle  
+- 📱 Social media sharing  
+
+#### :white_circle: **Won't** (Excluded from current scope)
+- ❌ Third-party payment integrations  
+- ❌ AR/VR product previews  
+- ❌ Advanced analytics dashboard  
+
 
 # Built With
 ### Technologies Used
