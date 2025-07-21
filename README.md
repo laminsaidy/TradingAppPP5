@@ -13,39 +13,41 @@ TradeHub is a full-stack peer-to-peer marketplace where users can sign up, searc
 Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 
 # Table of Contents
-1. [Project Features](#project-features)
-  - [Navbar](#navbar)
-  - [Footer](#footer)
-  - [About Page](#home-page)
-  - [Browse Item Page](#browse-item-page)
-  - [New Item Page](#new-item-page)
-  - [Menu Page](#menu-page)
-  - [Contact form](#contact-form)
-  - [Sign Up Form](#sign-out-form)
-  - [Sign In Form](#sign-in-form)
-  - [Admin Site](#admin-site)
-  - [Inbox](#inbox)
-  - [User Dashboard](#user-dashboard)
-  - [Error Page](#error-page)
-2. [Target Audience](#target-audience)
-3. [Design](#design)
-  - [Reseach](#research)
-  - [Fonts](#fonts)
-4. [Wireframe/App-sketch](#wireframe-app-sketch)
-5. [Built With](#built-with)
-6. [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-7. [Usage](#usage)
-8. [Testing](#testing)
-9. [Bugs](#bugs)
-10. [Deployment](#deployment)
-11. [Future Features](#future-features)
-12. [API Endpoints](#api-endpoints)
-13. [Database Models](#database-models)
-14. [Contributing](#contributing)
-15. [Contact](#contact)
-16. [Resources & Acknowledgements](#resources-acknowledgements)
+
+1. Project Features
+   - Navbar
+   - Footer
+   - About Page
+   - Browse Item Page
+   - New Item Page
+   - Menu Page
+   - Contact Form
+   - Sign Up Form
+   - Sign In Form
+   - Admin Site
+   - Inbox
+   - User Dashboard
+   - Error Page
+2. Target Audience
+3. Design
+   - Research
+   - Fonts
+4. Wireframe/App Sketch
+5. Built With
+6. Getting Started
+   - Prerequisites
+   - Installation
+7. Usage
+8. Testing
+9. Bugs
+10. Deployment
+11. Future Features
+12. API Endpoints
+13. Database Models
+14. Contributing
+15. Contact
+16. Resources & Acknowledgements
+
 
 ## Project Features
 # Navbar
