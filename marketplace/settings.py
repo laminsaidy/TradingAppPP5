@@ -150,8 +150,7 @@ LOGOUT_REDIRECT_URL = '/'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Custom 404 handler
-handler404 = 'products.views.handler404'
+
 
 # Security headers (for production)
 if not DEBUG:
