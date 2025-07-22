@@ -1,7 +1,7 @@
 # marketplace/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import handler404  # Add this import
+from products import views as product_views  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,5 +11,5 @@ urlpatterns = [
     path('items/', include('item.urls')), 
 ]
 
-# Add this at the very bottom of the file
-handler404 = 'django.views.defaults.page_not_found'
+# ✅ Point to your custom 404 view
+handler404 = product_views.handler404
