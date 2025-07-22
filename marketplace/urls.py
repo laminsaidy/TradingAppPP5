@@ -12,4 +12,4 @@ urlpatterns = [
 ]
 
 # ✅ Point to your custom 404 view
-handler404 = product_views.handler404
+handler404 = product_views.custom_404_view
