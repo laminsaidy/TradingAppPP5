@@ -1,9 +1,21 @@
+# product views
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from item.models import Category, Item
 from .forms import SignupForm, ContactForm
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
+def protected_view(request):
+    return render(request, 'protected.html')
+
+
+def custom_401_view(request, exception):
+    return render(request, '401.html', status=401)
 
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
