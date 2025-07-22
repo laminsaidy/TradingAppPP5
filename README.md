@@ -28,6 +28,7 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
    - Inbox
    - User Dashboard
    - Error Page
+   - Security & Access Control
 2. Target Audience
 3. Design
    - Research
@@ -117,8 +118,24 @@ Explore the live demo: [TradeHub](https://mytradehub.onrender.com/)
 ![404 Error Page](static/images/404.png)
 
 
+## 🔐 Security & Access Control
+
+This Django application includes access control using the built-in `@login_required` decorator. Pages that require authentication—such as creating, editing, or deleting items are protected. 
+
+If an unauthenticated user tries to access these pages, they are automatically redirected to the login page.
+
+### ✅ Features
+- Only logged-in users can access protected views.
+- Unauthorized access redirects to the login page instead of showing an error.
+- URL redirection uses Django's `?next=` parameter to return the user to their intended destination after login.
+
+> **Example:**  
+> Visiting `/item/new/` while logged out will redirect to:  
+> `/login/?next=/item/new/`
+
+
 # Target Audience
-TradingAppPP5 is designed for traders and investors who need a comprehensive platform to manage their trades, track market trends, and make informed decisions. The application aims to provide a user-friendly interface that caters to both beginners and experienced traders.
+TradingAppPP5 is designed for traders and investors who need a comprehensive platform to manage their trades, track market trends, and make informed decisions. The application aims to provide a user-friendly interface for all users.
 
 
 # Design
